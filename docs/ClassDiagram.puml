@@ -1,42 +1,47 @@
 @startuml
 'https://plantuml.com/class-diagram
-!pragma layout smetana
 
 class Main{
-+ Game game()
+- Game game
 + static void main()
+
 }
 
 class Game{
-- Arraylist<Player> leaderboard
+- int weaponCountdown
+-Arraylist<Player> leaderboard
 }
-package "model"{
 
+package "model"{
 class Player{
-- int position
 - int score
 - boolean weapon
+- Lane position
 
 + pickUpWeapon()
 + switchLaneRight()
 + switchLaneLeft()
 + onKill()
-+ onGemPickUp()
++ gemPickup()
 
 }
 class Lane{
-+ spawnObstacles()
+
+
+spawnObstacles()
 }
 class Course{
-- int weaponCountdown
+- Lane left
+- Lane mid
+- Lane right
+
 + Course(Lane left, Lane mid, Lane right )
 }
 
 interface Obstacles{
-- numberOfObstacles
-+ onImpact()
-
+- int numberOfObstacles
 }
+
 class ShootableObstacles{
 - int health
 + onDeath()
@@ -55,35 +60,37 @@ class Shotgun
 class RPG
 
 class Projectiles{
-- int size
-- int speed
+-int size
+-int speed
 
-+ onImpact()
++impact()
 }
 class Gem{
-- int numberOfGems
-}
 }
 
+
+}
 package "util"{
-class fileIO{
-- Scanner scan
+class FileIO{
+- Scanner scanner
 - File file
 + readLeaderboardData(String path)
-+ saveScore(String path)
++ void saveLearderboardData(String path, ArrayList<Player> players)
 }
-class textUI{
-+ String getInput()
+class TextUI{
++ String getInput(String msg)
+- Scanner scanner
++ void displayMessage(String msg)
 }
 }
-
 Main*--Game
 Game*--Player
 Game*--Course
-Game*--fileIO
-Game*--textUI
+Game*--FileIO
+Game*-- TextUI
 Course *-- Lane
 Obstacles<|-- ShootableObstacles
+Player*-- Obstacles
 Lane *--Obstacles
 Obstacles<|-- NonShootableObstacles
 Player *-- Weapon
@@ -94,8 +101,8 @@ Weapon<|-- Revolver
 Weapon<|-- Rifle
 Weapon<|-- Shotgun
 Weapon<|-- RPG
-Lane*--Gem
-Player*--Gem
+Lane *--Gem
+Player*-- Gem
 
 
 @enduml
