@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Game{
+- int weaponCountdown
+-Arraylist<Player> leaderboard
+}
+class Player{
+-int score
+- boolean weapon
+
++ pickUpWeapon()
++ switchLaneRight()
++ switchLaneLeft()
++ onKill()
+
+}
+class Lane
+class Course{
++ Course(Lane left, Lane mid, Lane right )
+}
+
+interface Obstacles
+class ShootableObstacles{
+- int health
+}
+class NonShootableObstacles
+
+interface Weapon{
+- int runTime
+- int damage
+
++ shoot()
+}
+class Revolver
+class Rifle
+class Shotgun
+class RPG
+
+class Projectiles{
+-int size
+-int speed
+
++impact()
+
+
+}
+
+
+Game*--Player
+Game*--Course
+Course *-- Lane
+Obstacles<|-- ShootableObstacles
+Lane *--Obstacles
+Obstacles<|-- NonShootableObstacles
+Player *-- Weapon
+Player*-- Lane
+Lane *-- Weapon
+Weapon *-- Projectiles
+Weapon<|-- Revolver
+Weapon<|-- Rifle
+Weapon<|-- Shotgun
+Weapon<|-- RPG
+
+
+@enduml

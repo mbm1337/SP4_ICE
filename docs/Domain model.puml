@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object Game
+object Player
+object Lanes
+object Course
+object Obstacles
+object ShootableObstacles
+object NonShootableObstacles
+object Weapon
+object Projectiles
+
+
+Game*--Player
+Game*--Course
+Course *-- Lanes
+Lanes *--Obstacles
+Obstacles<|-- ShootableObstacles
+Obstacles<|-- NonShootableObstacles
+Player *-- Weapon
+Lanes *-- Weapon
+Weapon*-- Projectiles
+
+
+@enduml
