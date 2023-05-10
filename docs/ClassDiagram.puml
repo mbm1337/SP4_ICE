@@ -16,7 +16,7 @@ package "model"{
 class Player{
 - int score
 - boolean weapon
-- Lane position
+- int position
 
 + pickUpWeapon()
 + switchLaneRight()
@@ -28,7 +28,9 @@ class Player{
 class Lane{
 
 
-spawnObstacles()
++spawnWeapon()
++spawnGem()
++spawnObstacles()
 }
 class Course{
 - Lane left
@@ -40,6 +42,8 @@ class Course{
 
 interface Obstacles{
 - int numberOfObstacles
+- int position
+- int speed
 }
 
 class ShootableObstacles{
@@ -51,6 +55,8 @@ class NonShootableObstacles
 interface Weapon{
 - int runTime
 - int damage
+- int position
+- int speed
 
 + shoot()
 }
@@ -62,10 +68,12 @@ class RPG
 class Projectiles{
 -int size
 -int speed
+- int position
 
 +impact()
 }
 class Gem{
+-int position
 }
 
 
@@ -103,6 +111,7 @@ Weapon<|-- Shotgun
 Weapon<|-- RPG
 Lane *--Gem
 Player*-- Gem
+
 
 
 @enduml
