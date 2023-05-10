@@ -1,28 +1,50 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+class Main{
+- Game game
++ static void main()
+
+}
+
 class Game{
 - int weaponCountdown
 -Arraylist<Player> leaderboard
 }
+
+package "model"{
 class Player{
--int score
+- int score
 - boolean weapon
+- Lane position
 
 + pickUpWeapon()
 + switchLaneRight()
 + switchLaneLeft()
 + onKill()
++ gemPickup()
 
 }
-class Lane
+class Lane{
+
+
+spawnObstacles()
+}
 class Course{
+- Lane left
+- Lane mid
+- Lane right
+
 + Course(Lane left, Lane mid, Lane right )
 }
 
-interface Obstacles
+interface Obstacles{
+- int numberOfObstacles
+}
+
 class ShootableObstacles{
 - int health
++ onDeath()
 }
 class NonShootableObstacles
 
@@ -42,15 +64,33 @@ class Projectiles{
 -int speed
 
 +impact()
-
-
+}
+class Gem{
 }
 
 
+}
+package "util"{
+class FileIO{
+- Scanner scanner
+- File file
++ readLeaderboardData(String path)
++ void saveLearderboardData(String path, ArrayList<Player> players)
+}
+class TextUI{
++ String getInput(String msg)
+- Scanner scanner
++ void displayMessage(String msg)
+}
+}
+Main*--Game
 Game*--Player
 Game*--Course
+Game*--FileIO
+Game*-- TextUI
 Course *-- Lane
 Obstacles<|-- ShootableObstacles
+Player*-- Obstacles
 Lane *--Obstacles
 Obstacles<|-- NonShootableObstacles
 Player *-- Weapon
@@ -61,6 +101,8 @@ Weapon<|-- Revolver
 Weapon<|-- Rifle
 Weapon<|-- Shotgun
 Weapon<|-- RPG
+Lane *--Gem
+Player*-- Gem
 
 
 @enduml
