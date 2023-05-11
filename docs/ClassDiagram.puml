@@ -9,7 +9,7 @@ class Main{
 
 class Game{
 - int weaponCountdown
--Arraylist<Player> leaderboard
+-Arraylist<String> leaderboard
 }
 
 package "model"{
