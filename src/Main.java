@@ -14,7 +14,6 @@ public class Main extends PApplet {
         clear();
     }
     public void draw(){
-        clear();
 
     }
 }

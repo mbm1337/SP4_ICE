@@ -1,3 +1,5 @@
+import Weapon.*;
+
 public class Lane {
 
     Weapon weapon;

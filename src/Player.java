@@ -4,7 +4,13 @@ public class Player {
     private boolean haveWeapon;
     private int position;
 
-    public Player(){
+    private Lane currentLane;
+
+    String name;
+
+    public Player(String name){
+        this.name = name;
+        score = 0;
 
     }
     public void pickUpWeapon(){
@@ -26,4 +32,11 @@ public class Player {
 
     }
 
+    public Lane getCurrentLane() {
+        return currentLane;
+    }
+
+    public void setCurrentLane(Lane currentLane) {
+        this.currentLane = currentLane;
+    }
 }

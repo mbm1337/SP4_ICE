@@ -2,8 +2,11 @@
   <library name="core">
     <CLASSES>
       <root url="jar:///Applications/Processing.app/Contents/Java/core/library/core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files (x86)/Processing/processing-4.1.2-windows-x64/processing-4.1.2/core/library/core.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Processing/processing-4.1.2-windows-x64/processing-4.1.2/core/library" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Processing/processing-4.1.2-windows-x64/processing-4.1.2/core/library" recursive="false" />
   </library>
 </component>
