@@ -15,12 +15,22 @@ public class Player {
     public Player(String name){
         this.name = name;
         score = 0;
+        xPosition = 450;
+
 
     }
     public void pickUpWeapon(){
 
     }
-    public void switchLaneRight(){
+    public void switchLane(Lane rightLane, Lane leftLane, Lane midLane){
+
+        if(currentLane == rightLane) {
+            xPosition = 650;
+        } else if ( currentLane == midLane) {
+            xPosition = 450;
+        }else if (currentLane == leftLane){
+            xPosition = 250;
+        }
 
     }
     public void switchLaneLeft(){
@@ -36,17 +46,14 @@ public class Player {
 
     }
     public void draw(){
-        xPosition = 450;
-        yPosition = 750;
+
         Main.p.fill(150);
-        Main.p.rect(xPosition,yPosition,100,40);
+        Main.p.rect(xPosition,750,100,40);
         Main.p.fill(100,70,50);
-        Main.p.rect(xPosition+35,yPosition+10,30,20);
+        Main.p.rect(xPosition+35,750+10,30,20);
 
     }
-    public void keyPressed(){
 
-    }
 
     public Lane getCurrentLane() {
         return currentLane;

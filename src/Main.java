@@ -1,9 +1,12 @@
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 
 public class Main extends PApplet {
     int width = 1000;
     int height = 800;
     public static PApplet p;
+
+    Game game;
     public static void main(String[] args) {
         PApplet.main("Main");
 
@@ -15,15 +18,21 @@ public class Main extends PApplet {
     @Override
     public void setup(){
         p = this;
+        game = new Game();
+        game.mainMenu();
+
     }
     public void draw(){
-        Player player = new Player();
-        Lane lane = new Lane(200);
-        Lane lane2 = new Lane(400);
-        Lane lane3 = new Lane(600);
-        lane.draw();
-        player.draw();
+        game.startGame();
 
+    }
 
+    public void keyPressed(){
+        if(key == 'a' || key == 'A'){
+            game.moveLeft();
+        }
+        if(key == 'd' || key == 'D'){
+            game.moveRight();
+        }
     }
 }
