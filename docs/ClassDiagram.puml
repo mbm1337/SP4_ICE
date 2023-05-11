@@ -1,6 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+
+!pragma layout smetana
+
 class Main{
 - Game game
 + static void main()
@@ -9,8 +12,10 @@ class Main{
 
 class Game{
 - int weaponCountdown
+
 -Arraylist<String> leaderboard
 }
+
 
 package "model"{
 class Player{
@@ -23,15 +28,17 @@ class Player{
 + switchLaneLeft()
 + onKill()
 + gemPickup()
-
++ onImpact()
 }
 class Lane{
-
 
 +spawnWeapon()
 +spawnGem()
 +spawnObstacles()
+spawnObstacles()
+
 }
+
 class Course{
 - Lane left
 - Lane mid
@@ -58,6 +65,7 @@ interface Weapon{
 - int position
 - int speed
 
+
 + shoot()
 }
 class Revolver
@@ -66,19 +74,27 @@ class Shotgun
 class RPG
 
 class Projectiles{
+
 -int size
 -int speed
+
+- int size
+- int speed
 - int position
 
 +impact()
 }
 class Gem{
+
 -int position
+
+- int position
+- int speed
 }
 
 
 }
-package "util"{
+package "util" {
 class FileIO{
 - Scanner scanner
 - File file
@@ -91,6 +107,7 @@ class TextUI{
 + void displayMessage(String msg)
 }
 }
+
 Main*--Game
 Game*--Player
 Game*--Course
@@ -111,7 +128,6 @@ Weapon<|-- Shotgun
 Weapon<|-- RPG
 Lane *--Gem
 Player*-- Gem
-
 
 
 @enduml
