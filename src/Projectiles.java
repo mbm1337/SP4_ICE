@@ -8,7 +8,7 @@ public class Projectiles {
         this.size = size;
         this.fireRate = fireRate;
         this.position = position;
-        //todo: this.speed =
+        //todo: this.speed = lav speed
         
     }
     public void onImpact(){
