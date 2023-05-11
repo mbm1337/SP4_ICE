@@ -21,6 +21,7 @@ public class Main extends PApplet {
         game = new Game();
         game.mainMenu();
 
+
     }
     public void draw(){
         game.startGame();

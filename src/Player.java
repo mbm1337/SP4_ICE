@@ -22,7 +22,7 @@ public class Player {
     public void pickUpWeapon(){
 
     }
-    public void switchLane(Lane rightLane, Lane leftLane, Lane midLane){
+    public void switchLane(Lane rightLane, Lane midLane, Lane leftLane){
 
         if(currentLane == rightLane) {
             xPosition = 650;
