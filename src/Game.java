@@ -88,8 +88,8 @@ public class Game {
     }
 
     public void quitGame(){
-
-
+        io.saveLeaderBoardData("src/leaderboard.csv", leaderboard);
+        System.exit(0);
     }
 
 

@@ -1,5 +1,6 @@
 @startuml
 'https://plantuml.com/object-diagram
+!pragma layout smetana
 
 object Game
 object Player

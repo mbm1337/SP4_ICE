@@ -7,18 +7,31 @@
 class Main{
 - Game game
 + static void main()
-
++settings()
++setup()
++ draw()
++ keyPressed()
 }
 
 class Game{
+- fileIO
+- TextUI
 - int weaponCountdown
-
 -Arraylist<String> leaderboard
+
++displayLeaderboard()
++ mainMenu()
++ Start game()
++ Quit game()
++ drawCourse()
++ moveRight()
++ moveLeft()
 }
 
 
 package "model"{
 class Player{
+- int xPosition
 - int score
 - boolean weapon
 - int position
@@ -31,6 +44,10 @@ class Player{
 + onImpact()
 }
 class Lane{
+- int height
+- int width
+- int xPosition
+
 
 +spawnWeapon()
 +spawnGem()
