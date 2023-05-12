@@ -1,7 +1,6 @@
 public class NonShootableObstacles extends Obstacles {
 
-    public NonShootableObstacles(){
-
+    NonShootableObstacles(int x, int y, int z, boolean g, boolean h, float speed) {
+        super(x, y, z, g, h, speed);
     }
-
 }
