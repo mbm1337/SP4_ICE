@@ -56,6 +56,7 @@ public class Player {
 
 
     public Lane getCurrentLane() {
+
         return currentLane;
     }
 

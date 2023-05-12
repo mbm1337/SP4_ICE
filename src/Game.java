@@ -1,14 +1,16 @@
 import java.util.ArrayList;
+
+import Weapon.*;
 import util.*;
 
 public class Game {
     int weaponCountdown;
+
+    int score;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
-
     String name;
-
     Player p;
     Lane leftLane;
     Lane midLane;
@@ -16,25 +18,22 @@ public class Game {
 
 
 
+
+
+
     public void mainMenu(){
-        ui = new TextUI();
-
         io = new FileIO();
+        leaderboard = io.readLeaderBoardData("src/leaderboard.csv");
 
-        leaderboard = io.readLeaderBoardData("src/learderbord.csv");
-
-        ui = new  TextUI();
-
-        name = ui.getInput("Please enter your name");
-        p = new Player(name);
-        p.setCurrentLane(midLane);
-
-
-
-        String input = ui.getInput("Please choose:");
+        ui = new TextUI();
+        String input = ui.getInput("Please choose:" +
+                "\n 1. Start Game" +
+                "\n 2. Display Leaderboard" +
+                "\n 3. Quit Game");
 
         switch (input){
             case "1":
+                setupGame();
                 Main.p.draw();
                 break;
             case "2":
@@ -51,11 +50,28 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
+        runGameLoop();
+    }
 
+    public void setupGame() {
+        name = ui.getInput("Please enter your name");
+        p = new Player(name);
+        score = 0;
 
+        leftLane = new Lane(200);
+        midLane = new Lane(400);
+        rightLane = new Lane(600);
+        p.setCurrentLane(midLane);
     }
 
     public void displayLeaderboard() {
+        for (String s : leaderboard ) {
+            ui.displayMessage(s);
+        }
+
+        if(ui.getInput("Press Q to get back").equalsIgnoreCase("Q")){
+            mainMenu();
+        }
 
 
     }
@@ -67,21 +83,17 @@ public class Game {
 
 
     public void drawCourse(){
-
-        leftLane = new Lane(200);
         leftLane.draw();
-        midLane = new Lane(400);
         midLane.draw();
-        rightLane = new Lane(600);
         rightLane.draw();
     }
 
     public void moveRight() {
-        if (p.getCurrentLane() == leftLane) {
-            p.setCurrentLane(midLane);
-            p.switchLane(rightLane,midLane,leftLane);
-        } else if (p.getCurrentLane() == midLane) {
+        if (p.getCurrentLane().equals(midLane)) {
             p.setCurrentLane(rightLane);
+            p.switchLane(rightLane,midLane,leftLane);
+        } else if (p.getCurrentLane().equals(leftLane)) {
+            p.setCurrentLane(midLane);
             p.switchLane(rightLane,midLane,leftLane);
         } else {
             p.setCurrentLane(rightLane);
@@ -91,17 +103,27 @@ public class Game {
     }
 
     public void moveLeft() {
-            if (p.getCurrentLane() == rightLane) {
-                p.setCurrentLane(midLane);
-                p.switchLane(rightLane,midLane,leftLane);
-            } else if (p.getCurrentLane() == midLane) {
+            if (p.getCurrentLane().equals(midLane)) {
                 p.setCurrentLane(leftLane);
+                p.switchLane(rightLane,midLane,leftLane);
+            } else if (p.getCurrentLane().equals(rightLane)) {
+                p.setCurrentLane(midLane);
                 p.switchLane(rightLane,midLane,leftLane);
             } else {
                 p.setCurrentLane(leftLane);
                 p.switchLane(rightLane,midLane,leftLane);
             }
-        }
+    }
+
+
+    public void runGameLoop() {
+
+
+    }
+
+
+
+
 }
 
 
