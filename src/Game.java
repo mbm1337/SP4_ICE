@@ -122,12 +122,6 @@ public class Game {
         obs2 = new ShootableObstacles();
         obs2.draw();
 
-
-        if( )
-
-
-
-
     }
 
 
