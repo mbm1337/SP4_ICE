@@ -1,11 +1,11 @@
 package util;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class FileIO {
@@ -16,6 +16,7 @@ public class FileIO {
         ArrayList<String> data = new ArrayList<>(21);
 
         try {
+            file = new File(path);
             scan = new Scanner(file);
             scan.nextLine(); // ignore header in csv
             while (scan.hasNextLine()) {
@@ -25,6 +26,7 @@ public class FileIO {
         } catch (FileNotFoundException e) {
             System.out.println("The file was not found");
         }
+
         return data;
     }
 
