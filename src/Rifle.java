@@ -1,7 +1,3 @@
-package Weapon;
-
-import Weapon.Weapon;
-
 public class Rifle extends Weapon {
 
     private int runTime = 0;
@@ -16,6 +12,11 @@ public class Rifle extends Weapon {
 
     @Override
     public void shoot() {
+
+    }
+
+    @Override
+    public void removeWeapon() {
 
     }
 }

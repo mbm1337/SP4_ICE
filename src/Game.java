@@ -1,11 +1,11 @@
 import java.util.ArrayList;
-
 import util.*;
+
 
 public class Game {
     int weaponCountdown;
-
     int score;
+    int xPosition;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
@@ -13,6 +13,7 @@ public class Game {
     Player p;
     NonShootableObstacles obs1;
     ShootableObstacles obs2;
+    Shotgun shotgun;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
@@ -53,6 +54,8 @@ public class Game {
         obs2.draw();
         checkObsPosition(obs2);
 
+        shotgun.draw();
+        pickUpWeapon(shotgun,-40);
     }
 
     public void setupGame() {
@@ -65,9 +68,9 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
-
         obs1 = new NonShootableObstacles();
         obs2 = new ShootableObstacles();
+        shotgun = new Shotgun();
 
 
     }
@@ -140,11 +143,13 @@ public class Game {
         }
     }
 
-
-
-
-
-
+    public void pickUpWeapon(Weapon weapon,int diff){
+        if(p.getYPosition() == weapon.getYPosition() && p.getXPosition() == weapon.getXPosition()-diff){
+            weapon.setYPosition(p.getYPosition());
+            weapon.setXPosition(p.getXPosition());
+            weapon.setSpeed(0);
+        }
+    }
 
 }
 

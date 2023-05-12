@@ -1,6 +1,4 @@
-package Weapon;
-
-public class Revolver extends Weapon{
+public class Revolver extends Weapon {
     private int runTime;
     private int damage;
     private int position;
@@ -12,6 +10,11 @@ public class Revolver extends Weapon{
     }
     @Override
     public void shoot() {
+
+    }
+
+    @Override
+    public void removeWeapon() {
 
     }
 }

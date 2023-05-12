@@ -4,13 +4,13 @@ public class ShootableObstacles extends Obstacles {
     int numberOfObstacles;
     int xPosition;
     float yPosition;
-    float speed;
+    float speed = 2;
     Random random = new Random();
 
     public ShootableObstacles() {
-        speed = super.speed;
         health = 10;
         yPosition = -50;
+        speed += 0.1;
         int x = random.nextInt(3);
         switch (x) {
             case 0:
