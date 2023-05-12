@@ -53,9 +53,8 @@ public class Game {
         checkObsPosition(obs1);
         obs2.draw();
         checkObsPosition(obs2);
-
         shotgun.draw();
-        pickUpWeapon(shotgun,-40);
+        pickUpWeapon(shotgun,40);
     }
 
     public void setupGame() {
@@ -71,8 +70,6 @@ public class Game {
         obs1 = new NonShootableObstacles();
         obs2 = new ShootableObstacles();
         shotgun = new Shotgun();
-
-
     }
 
     public void displayLeaderboard() {
@@ -133,8 +130,6 @@ public class Game {
         if (obs.equals(obs2)){
             obs2 = new ShootableObstacles();
         }
-
-
     }
 
     public void checkObsPosition(Obstacles obs){
@@ -143,8 +138,8 @@ public class Game {
         }
     }
 
-    public void pickUpWeapon(Weapon weapon,int diff){
-        if(p.getYPosition() == weapon.getYPosition() && p.getXPosition() == weapon.getXPosition()-diff){
+    public void pickUpWeapon(Shotgun weapon,int diff){
+        if(weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition() ){
             weapon.setYPosition(p.getYPosition());
             weapon.setXPosition(p.getXPosition());
             weapon.setSpeed(0);
