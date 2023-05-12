@@ -9,7 +9,7 @@ public class ShootableObstacles extends Obstacles {
 
     public ShootableObstacles() {
         health = 10;
-        yPosition = -50;
+        yPosition = -60;
         speed += 0.1;
         int x = random.nextInt(3);
         switch (x) {
