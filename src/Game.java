@@ -12,6 +12,7 @@ public class Game {
     FileIO io;
     String name;
     Player p;
+    NonShootableObstacles obs1;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
@@ -50,6 +51,7 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
+        obs1.draw();
         runGameLoop();
     }
 
@@ -62,6 +64,9 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
+
+        obs1 = new NonShootableObstacles();
+
     }
 
     public void displayLeaderboard() {

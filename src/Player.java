@@ -24,9 +24,9 @@ public class Player {
     }
     public void switchLane(Lane rightLane, Lane midLane, Lane leftLane){
 
-        if(currentLane == rightLane) {
+        if(currentLane == rightLane){
             xPosition = 650;
-        } else if ( currentLane == midLane) {
+        }else if (currentLane == midLane){
             xPosition = 450;
         }else if (currentLane == leftLane){
             xPosition = 250;
