@@ -10,6 +10,7 @@ public class Game {
     String name;
 
     Player p;
+    NonShootableObstacles obs1;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
@@ -18,16 +19,17 @@ public class Game {
 
     public void mainMenu(){
         ui = new TextUI();
-
         io = new FileIO();
-
         leaderboard = io.readLeaderBoardData("src/learderbord.csv");
 
-        ui = new  TextUI();
+        leftLane = new Lane(200);
+        midLane = new Lane(400);
+        rightLane = new Lane(600);
 
         name = ui.getInput("Please enter your name");
         p = new Player(name);
         p.setCurrentLane(midLane);
+        obs1 = new NonShootableObstacles();
 
 
 
@@ -51,7 +53,7 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
-
+        obs1.draw();
 
     }
 
@@ -67,20 +69,16 @@ public class Game {
 
 
     public void drawCourse(){
-
-        leftLane = new Lane(200);
         leftLane.draw();
-        midLane = new Lane(400);
         midLane.draw();
-        rightLane = new Lane(600);
         rightLane.draw();
     }
 
     public void moveRight() {
-        if (p.getCurrentLane() == leftLane) {
+        if (p.getCurrentLane().equals(leftLane)) {
             p.setCurrentLane(midLane);
             p.switchLane(rightLane,midLane,leftLane);
-        } else if (p.getCurrentLane() == midLane) {
+        } else if (p.getCurrentLane().equals(midLane)) {
             p.setCurrentLane(rightLane);
             p.switchLane(rightLane,midLane,leftLane);
         } else {
@@ -91,10 +89,10 @@ public class Game {
     }
 
     public void moveLeft() {
-            if (p.getCurrentLane() == rightLane) {
+            if (p.getCurrentLane().equals(rightLane)) {
                 p.setCurrentLane(midLane);
                 p.switchLane(rightLane,midLane,leftLane);
-            } else if (p.getCurrentLane() == midLane) {
+            } else if (p.getCurrentLane().equals(midLane)) {
                 p.setCurrentLane(leftLane);
                 p.switchLane(rightLane,midLane,leftLane);
             } else {
