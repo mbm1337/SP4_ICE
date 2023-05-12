@@ -11,6 +11,7 @@ public class Game {
 
     Player p;
     NonShootableObstacles obs1;
+    ShootableObstacles obs2;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
@@ -30,6 +31,7 @@ public class Game {
         p = new Player(name);
         p.setCurrentLane(midLane);
         obs1 = new NonShootableObstacles();
+        obs2 = new ShootableObstacles();
 
 
 
@@ -54,6 +56,7 @@ public class Game {
         drawCourse();
         p.draw();
         obs1.draw();
+        obs2.draw();
 
     }
 
