@@ -39,4 +39,7 @@ public class NonShootableObstacles extends Obstacles {
 
     }
 
+    public int getYPosition() {
+        return yPosition;
+    }
 }

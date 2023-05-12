@@ -18,10 +18,6 @@ public class Game {
     Lane rightLane;
 
 
-
-
-
-
     public void mainMenu(){
         io = new FileIO();
         leaderboard = io.readLeaderBoardData("src/leaderboard.csv");
@@ -51,12 +47,12 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
-        obs1.draw();
         runGameLoop();
     }
 
     public void setupGame() {
         name = ui.getInput("Please enter your name");
+        ui.displayMessage("The game is on!");
         p = new Player(name);
         score = 0;
 
@@ -65,7 +61,6 @@ public class Game {
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
 
-        obs1 = new NonShootableObstacles();
 
     }
 
@@ -122,6 +117,13 @@ public class Game {
 
 
     public void runGameLoop() {
+
+        obs1 = new NonShootableObstacles();
+        obs1.draw();
+
+        if( )
+
+
 
 
     }
