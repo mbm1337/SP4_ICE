@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import Weapon.*;
 import util.*;
 
 public class Game {
@@ -42,7 +41,6 @@ public class Game {
                 break;
             default:
         }
-
     }
 
     public void startGame(){
@@ -66,6 +64,8 @@ public class Game {
     }
 
     public void displayLeaderboard() {
+
+
         for (String s : leaderboard ) {
             ui.displayMessage(s);
         }
@@ -76,9 +76,9 @@ public class Game {
     }
 
     public void quitGame(){
+        io.saveLeaderBoardData("src/leaderboard.csv", leaderboard);
         System.exit(0);
     }
-
 
     public void drawCourse(){
         leftLane.draw();

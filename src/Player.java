@@ -1,15 +1,12 @@
 public class Player {
-
-    private int score;
     private boolean haveWeapon;
     private int position;
     private int width = 1000;
     private int height = 800;
     private int xPosition;
     private int yPosition;
-
     private Lane currentLane;
-
+    private int score;
     String name;
 
     public Player(String name){
