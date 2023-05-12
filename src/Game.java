@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-
-import Weapon.*;
 import util.*;
+
 
 public class Game {
     int weaponCountdown;
-
     int score;
+    int xPosition;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
@@ -14,9 +13,11 @@ public class Game {
     Player p;
     NonShootableObstacles obs1;
     ShootableObstacles obs2;
+    Shotgun shotgun;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
+
 
 
     public void mainMenu(){
@@ -48,7 +49,10 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
-        runGameLoop();
+        obs1.draw();
+        obs2.draw();
+        shotgun.draw();
+        pickUpWeapon(shotgun,-40);
     }
 
     public void setupGame() {
@@ -61,6 +65,9 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
+        obs1 = new NonShootableObstacles();
+        obs2 = new ShootableObstacles();
+        shotgun = new Shotgun();
 
 
     }
@@ -115,26 +122,21 @@ public class Game {
                 p.switchLane(rightLane,midLane,leftLane);
             }
     }
-
-
     public void runGameLoop() {
-
 
         obs1 = new NonShootableObstacles();
         obs1.draw();
         obs2 = new ShootableObstacles();
         obs2.draw();
 
-
-        if( )
-
-
-
-
     }
-
-
-
+    public void pickUpWeapon(Weapon weapon,int diff){
+        if(p.getYPosition() == weapon.getYPosition() && p.getXPosition() == weapon.getXPosition()-diff){
+            weapon.setYPosition(p.getYPosition());
+            weapon.setXPosition(p.getXPosition());
+            weapon.setSpeed(0);
+        }
+    }
 
 }
 

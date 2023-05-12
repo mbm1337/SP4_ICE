@@ -1,6 +1,4 @@
-package Weapon;
-
-public class RPG extends Weapon{
+public class RPG extends Weapon {
     private int runTime;
     private int damage;
     private int position;
@@ -14,6 +12,11 @@ public class RPG extends Weapon{
 
     @Override
     public void shoot() {
+
+    }
+
+    @Override
+    public void removeWeapon() {
 
     }
 }

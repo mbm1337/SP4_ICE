@@ -6,7 +6,7 @@ public class Player {
     private int width = 1000;
     private int height = 800;
     private int xPosition;
-    private int yPosition;
+    private float yPosition;
 
     private Lane currentLane;
 
@@ -18,9 +18,6 @@ public class Player {
         xPosition = 450;
         yPosition = 750;
 
-
-    }
-    public void pickUpWeapon(){
 
     }
     public void switchLane(Lane rightLane, Lane midLane, Lane leftLane){
@@ -67,7 +64,15 @@ public class Player {
     public int getXPosition(){
         return xPosition;
     }
-    public int getYPosition(){
+    public float getYPosition(){
+        return yPosition;
+    }
+    public int setXPosition(int xPosition){
+        this.xPosition = xPosition;
+        return xPosition;
+    }
+    public float setYPosition(float yPosition){
+        this.yPosition = yPosition;
         return yPosition;
     }
 }
