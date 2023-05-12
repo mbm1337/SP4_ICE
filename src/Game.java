@@ -13,6 +13,7 @@ public class Game {
     String name;
     Player p;
     NonShootableObstacles obs1;
+    ShootableObstacles obs2;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
@@ -118,8 +119,12 @@ public class Game {
 
     public void runGameLoop() {
 
+
         obs1 = new NonShootableObstacles();
         obs1.draw();
+        obs2 = new ShootableObstacles();
+        obs2.draw();
+
 
         if( )
 
