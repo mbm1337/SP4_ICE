@@ -13,13 +13,10 @@ public class Game {
     String name;
     Player p;
     NonShootableObstacles obs1;
+    ShootableObstacles obs2;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
-
-
-
-
 
 
     public void mainMenu(){
@@ -51,12 +48,12 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
-        obs1.draw();
         runGameLoop();
     }
 
     public void setupGame() {
         name = ui.getInput("Please enter your name");
+        ui.displayMessage("The game is on!");
         p = new Player(name);
         score = 0;
 
@@ -65,7 +62,6 @@ public class Game {
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
 
-        obs1 = new NonShootableObstacles();
 
     }
 
@@ -119,6 +115,17 @@ public class Game {
 
 
     public void runGameLoop() {
+
+
+        obs1 = new NonShootableObstacles();
+        obs1.draw();
+        obs2 = new ShootableObstacles();
+        obs2.draw();
+
+
+        if( )
+
+
 
 
     }
