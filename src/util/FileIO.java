@@ -18,7 +18,7 @@ public class FileIO {
         try {
             scan = new Scanner(file);
 
-            //scan.nextLine(); // ignore header in csv
+            scan.nextLine(); // ignore header in csv
 
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
