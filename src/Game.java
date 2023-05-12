@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-import Weapon.*;
 import util.*;
 
 public class Game {
@@ -17,6 +16,7 @@ public class Game {
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
+    Obstacles obs;
 
 
     public void mainMenu(){
@@ -48,7 +48,11 @@ public class Game {
     public void startGame(){
         drawCourse();
         p.draw();
-        runGameLoop();
+        obs1.draw();
+        checkObsPosition(obs1);
+        obs2.draw();
+        checkObsPosition(obs2);
+
     }
 
     public void setupGame() {
@@ -61,6 +65,9 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
+
+        obs1 = new NonShootableObstacles();
+        obs2 = new ShootableObstacles();
 
 
     }
@@ -116,22 +123,25 @@ public class Game {
             }
     }
 
-
-    public void runGameLoop() {
-
-
-        obs1 = new NonShootableObstacles();
-        obs1.draw();
-        obs2 = new ShootableObstacles();
-        obs2.draw();
-
-
-        if( )
-
-
+    public void spawnNewObs(Obstacles obs){
+        if (obs.equals(obs1)){
+            obs1 = new NonShootableObstacles();
+        }
+        if (obs.equals(obs2)){
+            obs2 = new ShootableObstacles();
+        }
 
 
     }
+
+    public void checkObsPosition(Obstacles obs){
+        if(obs.getYPosition() >= 800){
+            spawnNewObs(obs);
+        }
+    }
+
+
+
 
 
 

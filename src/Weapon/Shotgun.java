@@ -1,5 +1,6 @@
 package Weapon;
 
+
 public class Shotgun extends Weapon{
 
    private int runTime;

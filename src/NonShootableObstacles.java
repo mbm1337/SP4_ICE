@@ -4,8 +4,8 @@ public class NonShootableObstacles extends Obstacles {
 
     int numberOfObstacles;
     int xPosition;
-    int yPosition;
-    int speed = 2;
+    float yPosition;
+    float speed;
     int upperRandom  = 3;
     int lowerRandom = 1;
     Random random = new Random();
@@ -14,7 +14,8 @@ public class NonShootableObstacles extends Obstacles {
 
     public NonShootableObstacles(){
         yPosition = -30;
-       int x = random.nextInt(3);
+        speed = super.speed;
+        int x = random.nextInt(3);
        switch (x) {
            case 0:
                xPosition = 225;
@@ -41,11 +42,11 @@ public class NonShootableObstacles extends Obstacles {
     public int getXPosition(){
         return xPosition;
     }
-    public int getYPosition(){
+    public float getYPosition(){
         return yPosition;
     }
 
-    public int getYPosition() {
-        return yPosition;
+    public void setYPosition(int yPosition) {
+        this.yPosition = yPosition;
     }
 }
