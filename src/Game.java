@@ -77,13 +77,10 @@ public class Game {
         if(ui.getInput("Press Q to get back").equalsIgnoreCase("Q")){
             mainMenu();
         }
-
-
     }
 
     public void quitGame(){
-
-
+        System.exit(0);
     }
 
 

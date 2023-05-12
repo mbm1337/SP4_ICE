@@ -7,13 +7,7 @@ public abstract class Obstacles {
     boolean isTriple;
 
 
-    Obstacles(int x, int y, int z,boolean g, boolean h,float speed) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.isDouble = g;
-        this.isTriple = h;
-        this.speed = speed;
+    Obstacles() {
 
     }
 

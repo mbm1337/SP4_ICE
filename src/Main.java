@@ -34,5 +34,8 @@ public class Main extends PApplet {
         if(key == 'd' || key == 'D'){
             game.moveRight();
         }
+        if(keyCode == 27){
+            game.quitGame();
+        }
     }
 }
