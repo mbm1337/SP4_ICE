@@ -5,7 +5,6 @@ import util.*;
 public class Game {
     int weaponCountdown;
     int score;
-    int xPosition;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
@@ -59,6 +58,7 @@ public class Game {
         if(weaponPickedUp){
             fixedWeapon(shotgun);
         }
+        removeWeapon();
     }
 
     public void setupGame() {
@@ -149,6 +149,7 @@ public class Game {
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
             weaponPickedUp = true;
+            weaponCountdown = 500;
 
         }
     }
@@ -156,6 +157,14 @@ public class Game {
         weapon.setXPosition(p.getXPosition());
         weapon.setYPosition(p.getYPosition());
         weapon.setSpeed(0);
+        weaponCountdown -= 1;
+    }
+    public void removeWeapon(){
+        System.out.println(weaponCountdown);
+        if(weaponCountdown == 0){
+            weaponPickedUp = false;
+
+        }
     }
 }
 
