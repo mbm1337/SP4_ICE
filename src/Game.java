@@ -91,6 +91,8 @@ public class Game {
             fixedWeapon(shotgun);
         }
         removeWeapon(shotgun);
+        checkWeaponPosition(shotgun);
+
 
     }
 
@@ -178,8 +180,6 @@ public class Game {
 
         }
     }
-
-
     public void fixedWeapon(Weapon weapon){
         weapon.setYPosition(p.getYPosition());
         weapon.setXPosition(p.getXPosition());
@@ -190,11 +190,19 @@ public class Game {
         System.out.println(weaponCountdown);
         if(weaponCountdown == 0){
             weaponPickedUp = false;
-            shotgun.setSpeed(2);
-
+            weapon.setSpeed(2);
         }
     }
-
+    public void checkWeaponPosition(Weapon weapon){
+        if(weapon.getYPosition() >= 900){
+            spawnNewWeapon(weapon);
+        }
+    }
+    public void spawnNewWeapon(Weapon weapon){
+        if(weapon.equals(shotgun)){
+            shotgun = new Shotgun();
+        }
+    }
 }
 
 
