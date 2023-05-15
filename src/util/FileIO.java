@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -27,7 +28,16 @@ public class FileIO {
         } catch (FileNotFoundException e) {
             System.out.println("The file was not found");
         }
-
+        Comparator<String> scoreComparator = (s1, s2) -> {
+            // Split the strings into name and score
+            String[] s1Parts = s1.split(":");
+            String[] s2Parts = s2.split(":");
+            int score1 = Integer.parseInt(s1Parts[1]);
+            int score2 = Integer.parseInt(s2Parts[1]);
+            // Compare the scores
+            return Integer.compare(score2, score1);
+        };
+        Collections.sort(data, scoreComparator);
         return data;
     }
 
