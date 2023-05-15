@@ -17,15 +17,11 @@ public class Game {
     Lane rightLane;
     NonShootableObstacles nonShootObs1;
     NonShootableObstacles nonShootObs2;
-
     NonShootableObstacles nonShootObs3;
-
     ShootableObstacles shootObs;
     Shotgun shotgun;
     Score score;
-
     private boolean weaponPickedUp;
-
 
     public void mainMenu(){
         io = new FileIO();
@@ -36,7 +32,6 @@ public class Game {
                 "\n 1. Start Game" +
                 "\n 2. Display Leaderboard" +
                 "\n 3. Quit Game");
-
         switch (input){
             case "1":
                 setupGame();
@@ -49,16 +44,15 @@ public class Game {
                 quitGame();
                 break;
             default:
+                ui.displayMessage("This is not a option");
+                mainMenu();
         }
-
     }
-
 
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
         p = new Player(name);
-
         leftLane = new Lane(200);
         midLane = new Lane(400);
         rightLane = new Lane(600);
@@ -68,7 +62,6 @@ public class Game {
         nonShootObs3 = new NonShootableObstacles(-400);
         shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
-
     }
 
     public void startGame(){
@@ -80,13 +73,8 @@ public class Game {
         checkObsPosition(nonShootObs2);
         nonShootObs3.draw();
         checkObsPosition(nonShootObs3);
-
-
-
         shootObs.draw();
         checkObsPosition(shootObs);
-
-
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
         if(weaponPickedUp){
@@ -94,20 +82,15 @@ public class Game {
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
-
-
     }
 
     public void displayLeaderboard() {
         for (String[] s : leaderboard ) {
             ui.displayMessage(s[0] + " = " +s[1]);
         }
-
         if(ui.getInput("Press Q to get back").equalsIgnoreCase("Q")){
             mainMenu();
         }
-
-
     }
 
     public void quitGame(){
@@ -125,21 +108,17 @@ public class Game {
                 break;
             }
         }
-
         if (index != -1) {
             for (int i = leaderboard.length - 1; i > index; i--) {
                 leaderboard[i] = leaderboard[i - 1];
             }
         }
-
         leaderboard[index][0] = name;
         leaderboard[index][1] = String.valueOf(score.getScore());
-
         if (leaderboard.length > 20) {
             leaderboard = Arrays.copyOf(leaderboard, 20);
         }
     }
-
 
     public void drawCourse(){
         leftLane.draw();
@@ -158,7 +137,6 @@ public class Game {
             p.setCurrentLane(rightLane);
             p.switchLane(rightLane,midLane,leftLane);
         }
-
     }
 
     public void moveLeft() {
@@ -187,8 +165,6 @@ public class Game {
         if (obs.equals(shootObs)){
             shootObs = new ShootableObstacles(-10);
         }
-
-
     }
 
     public void checkObsPosition(Obstacles obs){
@@ -204,27 +180,29 @@ public class Game {
             weapon.setSpeed(0);
             weaponPickedUp = true;
             weaponCountdown = 500;
-
         }
     }
+
     public void fixedWeapon(Weapon weapon){
         weapon.setYPosition(p.getYPosition());
         weapon.setXPosition(p.getXPosition());
         weapon.setSpeed(0);
         weaponCountdown -= 1;
     }
+
     public void removeWeapon(Weapon weapon){
-        System.out.println(weaponCountdown);
         if(weaponCountdown == 0){
             weaponPickedUp = false;
             weapon.setSpeed(2);
         }
     }
+
     public void checkWeaponPosition(Weapon weapon){
         if(weapon.getYPosition() >= 900){
             spawnNewWeapon(weapon);
         }
     }
+
     public void spawnNewWeapon(Weapon weapon){
         if(weapon.equals(shotgun)){
             shotgun = new Shotgun();
@@ -235,6 +213,3 @@ public class Game {
         Main.p.text(score,450,450);
     }
 }
-
-
-
