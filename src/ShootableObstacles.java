@@ -1,7 +1,6 @@
 import java.util.Random;
 public class ShootableObstacles extends Obstacles {
     int health;
-    int numberOfObstacles;
     int xPosition;
     float yPosition;
     float speed = 2;

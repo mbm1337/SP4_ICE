@@ -6,7 +6,7 @@ public class Player {
     private int width = 1000;
     private int height = 800;
     private int xPosition;
-    private float yPosition;
+    private int yPosition;
 
     private Lane currentLane;
 
@@ -64,14 +64,14 @@ public class Player {
     public int getXPosition(){
         return xPosition;
     }
-    public float getYPosition(){
+    public int getYPosition(){
         return yPosition;
     }
     public int setXPosition(int xPosition){
         this.xPosition = xPosition;
         return xPosition;
     }
-    public float setYPosition(float yPosition){
+    public int setYPosition(int yPosition){
         this.yPosition = yPosition;
         return yPosition;
     }

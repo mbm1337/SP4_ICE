@@ -1,12 +1,15 @@
 public abstract class Obstacles {
 
     int numberOfObstacles;
-    int position;
+    int xPosition;
     float speed = 2;
     float yPosition;
 
-    public float getYPosition() {
+    public float getyPosition() {
         return yPosition;
     }
 
+    public int getxPosition() {
+        return xPosition;
+    }
 }
