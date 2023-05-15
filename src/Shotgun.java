@@ -42,7 +42,7 @@ public class Shotgun extends Weapon {
     public void draw(){
        Main.p.fill(50);
        Main.p.strokeWeight(1);
-       Main.p.rect(xPosition,yPosition,20,45);
+       Main.p.rect(xPosition,yPosition,20,40);
        Main.p.textSize(10);
        Main.p.fill(255,0,0);
        Main.p.text("Shotgun",xPosition-7,yPosition-4);

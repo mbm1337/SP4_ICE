@@ -58,13 +58,13 @@ public class Game {
         checkObsPosition(obs1);
         obs2.draw();
         checkObsPosition(obs2);
+
+
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
         if(weaponPickedUp){
             fixedWeapon(shotgun);
         }
-
-
 
     }
 
