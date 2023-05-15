@@ -4,9 +4,8 @@ import util.*;
 
 public class Game {
     int weaponCountdown;
-    int score;
     int xPosition;
-    ArrayList<String> leaderboard;
+    String[][] leaderboard;
     TextUI ui;
     FileIO io;
     String name;
@@ -18,7 +17,7 @@ public class Game {
     Lane midLane;
     Lane rightLane;
     Obstacles obs;
-
+   Score score;
 
     public void mainMenu(){
         io = new FileIO();
@@ -43,10 +42,10 @@ public class Game {
                 break;
             default:
         }
-
     }
 
     public void startGame(){
+        score.setIsRunning(true);
         drawCourse();
         p.draw();
         obs1.draw();
@@ -55,6 +54,8 @@ public class Game {
         checkObsPosition(obs2);
         shotgun.draw();
         pickUpWeapon(shotgun,40);
+
+
     }
 
     public void setupGame() {
@@ -73,8 +74,8 @@ public class Game {
     }
 
     public void displayLeaderboard() {
-        for (String s : leaderboard ) {
-            ui.displayMessage(s);
+        for (String[] s : leaderboard ) {
+            ui.displayMessage(s[0] + " = " +s[1]);
         }
 
         if(ui.getInput("Press Q to get back").equalsIgnoreCase("Q")){
@@ -85,8 +86,14 @@ public class Game {
     }
 
     public void quitGame(){
+        score.setIsRunning(false);
+        saveScoreToLeaderboard();
         io.saveLeaderBoardData("src/leaderboard.csv", leaderboard);
         System.exit(0);
+    }
+
+    private void saveScoreToLeaderboard() {
+
     }
 
 
@@ -146,7 +153,7 @@ public class Game {
         }
     }
 
+    public void displayScore(int score){
+        Main.p.text(score,450,450);
+    }
 }
-
-
-
