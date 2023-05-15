@@ -3,13 +3,14 @@ public class ShootableObstacles extends Obstacles {
     int health;
     int numberOfObstacles;
     int xPosition;
-    int yPosition;
-    int speed = 1;
+    float yPosition;
+    float speed = 2;
     Random random = new Random();
 
     public ShootableObstacles() {
         health = 10;
-        yPosition = -50;
+        yPosition = -60;
+        speed += 0.1;
         int x = random.nextInt(3);
         switch (x) {
             case 0:
@@ -43,7 +44,7 @@ public class ShootableObstacles extends Obstacles {
     public int getXPosition(){
         return xPosition;
     }
-    public int getYPosition(){
+    public float getYPosition(){
         return yPosition;
     }
 }

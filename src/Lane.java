@@ -1,4 +1,3 @@
-import Weapon.*;
 public class Lane {
 
     private int xPosition;

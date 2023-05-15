@@ -22,6 +22,7 @@ public class Game {
     NonShootableObstacles obs3;
 
 
+
     public void mainMenu(){
         io = new FileIO();
         leaderboard = io.readLeaderBoardData("src/leaderboard.csv");
@@ -48,6 +49,17 @@ public class Game {
 
     }
 
+    public void startGame(){
+        drawCourse();
+        p.draw();
+        obs1.draw();
+        checkObsPosition(obs1);
+        obs2.draw();
+        checkObsPosition(obs2);
+        shotgun.draw();
+        pickUpWeapon(shotgun,40);
+    }
+
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
@@ -63,18 +75,7 @@ public class Game {
         shotgun = new Shotgun();
         obs3 = new NonShootableObstacles();
     }
-
-    public void startGame(){
-        drawCourse();
-        p.draw();
-        obs1.draw();
-        checkObsPosition(obs1);
-        obs2.draw();
-        checkObsPosition(obs2);
-        shotgun.draw();
-        pickUpWeapon(shotgun,40);
-
-    }
+    
 
 
     public void displayLeaderboard() {

@@ -2,24 +2,24 @@ package util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
 
 public class FileIO {
     File file;
     Scanner scan;
 
     public ArrayList<String> readLeaderBoardData(String path) {
-
-        file = new File(path);
-        ArrayList<String> data = new ArrayList<>();
-
+        ArrayList<String> data = new ArrayList<>(21);
 
         try {
+            file = new File(path);
             scan = new Scanner(file);
-
             scan.nextLine(); // ignore header in csv
-
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 data.add(line);
@@ -27,11 +27,21 @@ public class FileIO {
         } catch (FileNotFoundException e) {
             System.out.println("The file was not found");
         }
+
         return data;
     }
 
-    void saveLeaderBoardData(String path, ArrayList<String> data){
-
+    public void saveLeaderBoardData(String path, ArrayList<String> data){
+        try {
+            FileWriter file = new FileWriter(path);
+            file.write("Name:Score\n");
+            for(String s : data) {
+                file.write(s+"\n");
+            }
+            file.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
