@@ -22,6 +22,7 @@ public class Game {
 
     ShootableObstacles shootObs;
     Shotgun shotgun;
+    Score score;
 
     private boolean weaponPickedUp;
 
