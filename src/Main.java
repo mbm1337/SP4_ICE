@@ -25,7 +25,6 @@ public class Main extends PApplet {
     }
     public void draw(){
         game.startGame();
-
     }
 
     public void keyPressed(){
