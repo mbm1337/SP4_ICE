@@ -14,7 +14,6 @@ public class Shotgun extends Weapon {
        this.runTime = 10;
        this.damage = 5;
        yPosition = -20;
-       speed += 0.1;
 
        int x = random.nextInt(3);
        switch (x) {
