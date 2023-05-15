@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import util.*;
 
 
@@ -22,7 +24,7 @@ public class Game {
     public void mainMenu(){
         io = new FileIO();
         leaderboard = io.readLeaderBoardData("src/leaderboard.csv");
-
+        score = new Score();
         ui = new TextUI();
         String input = ui.getInput("Please choose:" +
                 "\n 1. Start Game" +
@@ -46,6 +48,7 @@ public class Game {
 
     public void startGame(){
         score.setIsRunning(true);
+        score.draw();
         drawCourse();
         p.draw();
         obs1.draw();
@@ -62,7 +65,6 @@ public class Game {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
         p = new Player(name);
-        score = 0;
 
         leftLane = new Lane(200);
         midLane = new Lane(400);
@@ -93,7 +95,26 @@ public class Game {
     }
 
     private void saveScoreToLeaderboard() {
+        int index = -1;
+        for (int i = 0; i < leaderboard.length; i++) {
+            if (leaderboard[i][1] != null && Integer.parseInt(leaderboard[i][1]) < score.getScore()) {
+                index = i;
+                break;
+            }
+        }
 
+        if (index != -1) {
+            for (int i = leaderboard.length - 1; i > index; i--) {
+                leaderboard[i] = leaderboard[i - 1];
+            }
+        }
+
+        leaderboard[index][0] = name;
+        leaderboard[index][1] = String.valueOf(score.getScore());
+
+        if (leaderboard.length > 20) {
+            leaderboard = Arrays.copyOf(leaderboard, 20);
+        }
     }
 
 
