@@ -21,9 +21,6 @@ public class Game {
     private boolean weaponPickedUp;
 
 
-
-
-
     public void mainMenu(){
         io = new FileIO();
         leaderboard = io.readLeaderBoardData("src/leaderboard.csv");
@@ -49,6 +46,8 @@ public class Game {
         }
 
     }
+
+
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
@@ -82,6 +81,7 @@ public class Game {
         if(weaponPickedUp){
             fixedWeapon(shotgun);
         }
+        removeWeapon();
 
     }
 
@@ -120,6 +120,7 @@ public class Game {
             p.setCurrentLane(rightLane);
             p.switchLane(rightLane,midLane,leftLane);
         }
+
     }
 
     public void moveLeft() {
@@ -161,6 +162,8 @@ public class Game {
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
             weaponPickedUp = true;
+            weaponCountdown = 500;
+
         }
     }
 
@@ -169,8 +172,16 @@ public class Game {
         weapon.setYPosition(p.getYPosition());
         weapon.setXPosition(p.getXPosition());
         weapon.setSpeed(0);
+        weaponCountdown -= 1;
     }
-    
+    public void removeWeapon(){
+        System.out.println(weaponCountdown);
+        if(weaponCountdown == 0){
+            weaponPickedUp = false;
+
+        }
+    }
+
 }
 
 
