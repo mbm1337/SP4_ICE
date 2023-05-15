@@ -18,6 +18,7 @@ public class Game {
     Lane midLane;
     Lane rightLane;
     Obstacles obs;
+    private boolean weaponPickedUp;
 
 
     public void mainMenu(){
@@ -55,6 +56,9 @@ public class Game {
         checkObsPosition(obs2);
         shotgun.draw();
         pickUpWeapon(shotgun,40);
+        if(weaponPickedUp){
+            fixedWeapon(shotgun);
+        }
     }
 
     public void setupGame() {
@@ -70,6 +74,7 @@ public class Game {
         obs1 = new NonShootableObstacles();
         obs2 = new ShootableObstacles();
         shotgun = new Shotgun();
+
     }
 
     public void displayLeaderboard() {
@@ -138,14 +143,20 @@ public class Game {
         }
     }
 
-    public void pickUpWeapon(Shotgun weapon,int diff){
-        if(weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition() ){
-            weapon.setYPosition(p.getYPosition());
+    public void pickUpWeapon(Weapon weapon,int diff){
+        if(weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition()) {
             weapon.setXPosition(p.getXPosition());
+            weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
+            weaponPickedUp = true;
+
         }
     }
-
+    public void fixedWeapon(Weapon weapon){
+        weapon.setXPosition(p.getXPosition());
+        weapon.setYPosition(p.getYPosition());
+        weapon.setSpeed(0);
+    }
 }
 
 

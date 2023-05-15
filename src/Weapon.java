@@ -2,8 +2,8 @@ public abstract class Weapon {
     private int runTime;
     private int damage;
     private int xPosition;
-    private float yPosition;
-    private float speed;
+    private int yPosition;
+    private int speed;
 
 
     public abstract void shoot();
@@ -20,11 +20,11 @@ public abstract class Weapon {
         this.xPosition = xPosition;
         return xPosition;
     }
-    public float setYPosition(float yPosition){
+    public int setYPosition(int yPosition){
         this.yPosition = yPosition;
         return yPosition;
     }
-    public void setSpeed(float speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 }
