@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-
-import Weapon.*;
 import util.*;
+
 
 public class Game {
     int weaponCountdown;
-
     int score;
+    int xPosition;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
@@ -14,9 +13,13 @@ public class Game {
     Player p;
     NonShootableObstacles obs1;
     ShootableObstacles obs2;
+    Shotgun shotgun;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
+    Obstacles obs;
+
+    NonShootableObstacles obs3;
 
 
     public void mainMenu(){
@@ -45,12 +48,6 @@ public class Game {
 
     }
 
-    public void startGame(){
-        drawCourse();
-        p.draw();
-        runGameLoop();
-    }
-
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
@@ -61,9 +58,24 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
+        obs1 = new NonShootableObstacles();
+        obs2 = new ShootableObstacles();
+        shotgun = new Shotgun();
+        obs3 = new NonShootableObstacles();
+    }
 
+    public void startGame(){
+        drawCourse();
+        p.draw();
+        obs1.draw();
+        checkObsPosition(obs1);
+        obs2.draw();
+        checkObsPosition(obs2);
+        shotgun.draw();
+        pickUpWeapon(shotgun,40);
 
     }
+
 
     public void displayLeaderboard() {
         for (String s : leaderboard ) {
@@ -78,8 +90,8 @@ public class Game {
     }
 
     public void quitGame(){
-
-
+        io.saveLeaderBoardData("src/leaderboard.csv", leaderboard);
+        System.exit(0);
     }
 
 
@@ -116,25 +128,28 @@ public class Game {
             }
     }
 
-
-    public void runGameLoop() {
-
-
-        obs1 = new NonShootableObstacles();
-        obs1.draw();
-        obs2 = new ShootableObstacles();
-        obs2.draw();
-
-
-        if( )
-
-
-
-
+    public void spawnNewObs(Obstacles obs){
+        if (obs.equals(obs1)){
+            obs1 = new NonShootableObstacles();
+        }
+        if (obs.equals(obs2)){
+            obs2 = new ShootableObstacles();
+        }
     }
 
+    public void checkObsPosition(Obstacles obs){
+        if(obs.getYPosition() >= 800){
+            spawnNewObs(obs);
+        }
+    }
 
-
+    public void pickUpWeapon(Shotgun weapon,int diff){
+        if(weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition() ){
+            weapon.setYPosition(p.getYPosition());
+            weapon.setXPosition(p.getXPosition());
+            weapon.setSpeed(0);
+        }
+    }
 
 }
 
