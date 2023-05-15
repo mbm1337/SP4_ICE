@@ -5,11 +5,11 @@ public abstract class Obstacles {
     float speed = 2;
     float yPosition;
 
-    public float getyPosition() {
+    public float getYPosition() {
         return yPosition;
     }
 
-    public int getxPosition() {
+    public int getXPosition() {
         return xPosition;
     }
 }

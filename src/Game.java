@@ -5,22 +5,21 @@ import util.*;
 public class Game {
     int weaponCountdown;
     int score;
-    int xPosition;
     ArrayList<String> leaderboard;
     TextUI ui;
     FileIO io;
     String name;
     Player p;
-    NonShootableObstacles obs1;
-    ShootableObstacles obs2;
-    Shotgun shotgun;
     Lane leftLane;
     Lane midLane;
     Lane rightLane;
-    Obstacles obs;
+    NonShootableObstacles nonShootObs1;
+    NonShootableObstacles nonShootObs2;
+    ShootableObstacles shootObs;
+    Shotgun shotgun;
+
     private boolean weaponPickedUp;
 
-    NonShootableObstacles obs3;
 
 
 
@@ -50,24 +49,6 @@ public class Game {
         }
 
     }
-
-    public void startGame(){
-        drawCourse();
-        p.draw();
-        obs1.draw();
-        checkObsPosition(obs1);
-        obs2.draw();
-        checkObsPosition(obs2);
-
-
-        shotgun.draw();
-        pickUpWeapon(shotgun, 40);
-        if(weaponPickedUp){
-            fixedWeapon(shotgun);
-        }
-
-    }
-
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
@@ -78,13 +59,31 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
-        obs1 = new NonShootableObstacles();
-        obs2 = new ShootableObstacles();
+        nonShootObs1 = new NonShootableObstacles();
+        nonShootObs2 = new NonShootableObstacles();
+        shootObs = new ShootableObstacles();
         shotgun = new Shotgun();
 
     }
 
+    public void startGame(){
+        drawCourse();
+        p.draw();
+        nonShootObs1.draw();
+        checkObsPosition(nonShootObs1);
+        nonShootObs2.draw();
+        checkObsPosition(nonShootObs2);
+        shootObs.draw();
+        checkObsPosition(shootObs);
 
+
+        shotgun.draw();
+        pickUpWeapon(shotgun, 40);
+        if(weaponPickedUp){
+            fixedWeapon(shotgun);
+        }
+
+    }
 
     public void displayLeaderboard() {
         for (String s : leaderboard ) {
@@ -137,16 +136,21 @@ public class Game {
     }
 
     public void spawnNewObs(Obstacles obs){
-        if (obs.equals(obs1)){
-            obs1 = new NonShootableObstacles();
+        if (obs.equals(nonShootObs1)){
+            nonShootObs1 = new NonShootableObstacles();
         }
-        if (obs.equals(obs2)){
-            obs2 = new ShootableObstacles();
+        if (obs.equals(nonShootObs2)){
+            nonShootObs2 = new NonShootableObstacles();
         }
+        if (obs.equals(shootObs)){
+            shootObs = new ShootableObstacles();
+        }
+
+
     }
 
     public void checkObsPosition(Obstacles obs){
-        if(obs.getyPosition() >= 800){
+        if(obs.getYPosition() >= 800){
             spawnNewObs(obs);
         }
     }
@@ -165,7 +169,6 @@ public class Game {
         weapon.setYPosition(p.getYPosition());
         weapon.setXPosition(p.getXPosition());
         weapon.setSpeed(0);
-
     }
     
 }
