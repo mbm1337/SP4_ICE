@@ -96,6 +96,7 @@ public class Game {
 
     private void saveScoreToLeaderboard() {
         int index = -1;
+        System.out.println(score.getScore());
         for (int i = 0; i < leaderboard.length; i++) {
             if (leaderboard[i][1] != null && Integer.parseInt(leaderboard[i][1]) < score.getScore()) {
                 index = i;
@@ -106,11 +107,19 @@ public class Game {
         if (index != -1) {
             for (int i = leaderboard.length - 1; i > index; i--) {
                 leaderboard[i] = leaderboard[i - 1];
+                System.out.println(leaderboard[i][1]);
             }
         }
-
+        System.out.println(leaderboard[index][0]);
+        System.out.println(leaderboard[index][1]);
         leaderboard[index][0] = name;
         leaderboard[index][1] = String.valueOf(score.getScore());
+        System.out.println(leaderboard[index][0]);
+        System.out.println(leaderboard[index][1]);
+        System.out.println(leaderboard[index+1][0]);
+        System.out.println(leaderboard[index+1][1]);
+        System.out.println(leaderboard[index-1][0]);
+        System.out.println(leaderboard[index-1][1]);
 
         if (leaderboard.length > 20) {
             leaderboard = Arrays.copyOf(leaderboard, 20);
@@ -172,9 +181,5 @@ public class Game {
             weapon.setXPosition(p.getXPosition());
             weapon.setSpeed(0);
         }
-    }
-
-    public void displayScore(int score){
-        Main.p.text(score,450,450);
     }
 }

@@ -5,6 +5,9 @@ public class Score {
     boolean isRunning;
     int score;
     long s = System.currentTimeMillis();
+    int duration = 1000;
+    int timer = 0;
+
 
     Score() {
         counter = 0;
@@ -13,16 +16,15 @@ public class Score {
     }
 
     public void draw() {
-        /*if(isRunning) {
-            counter++;
-            score = counter * 100;
-            System.out.println(score);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        if (isRunning) {
+            if ((int) System.currentTimeMillis() - timer > duration) {
+                counter++;
+                score = counter * 100;
+                System.out.println(score);
+                timer = (int) System.currentTimeMillis();
             }
-        } */
+        }
+        Main.p.text(score,450,450);
     }
 
     public int getScore(){
