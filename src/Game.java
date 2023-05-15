@@ -15,6 +15,9 @@ public class Game {
     Lane rightLane;
     NonShootableObstacles nonShootObs1;
     NonShootableObstacles nonShootObs2;
+
+    NonShootableObstacles nonShootObs3;
+
     ShootableObstacles shootObs;
     Shotgun shotgun;
 
@@ -58,9 +61,10 @@ public class Game {
         midLane = new Lane(400);
         rightLane = new Lane(600);
         p.setCurrentLane(midLane);
-        nonShootObs1 = new NonShootableObstacles();
-        nonShootObs2 = new NonShootableObstacles();
-        shootObs = new ShootableObstacles();
+        nonShootObs1 = new NonShootableObstacles(0);
+        nonShootObs2 = new NonShootableObstacles(-200);
+        nonShootObs3 = new NonShootableObstacles(-400);
+        shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
 
     }
@@ -72,6 +76,11 @@ public class Game {
         checkObsPosition(nonShootObs1);
         nonShootObs2.draw();
         checkObsPosition(nonShootObs2);
+        nonShootObs3.draw();
+        checkObsPosition(nonShootObs3);
+
+
+
         shootObs.draw();
         checkObsPosition(shootObs);
 
@@ -81,7 +90,7 @@ public class Game {
         if(weaponPickedUp){
             fixedWeapon(shotgun);
         }
-        removeWeapon();
+        removeWeapon(shotgun);
 
     }
 
@@ -138,13 +147,16 @@ public class Game {
 
     public void spawnNewObs(Obstacles obs){
         if (obs.equals(nonShootObs1)){
-            nonShootObs1 = new NonShootableObstacles();
+            nonShootObs1 = new NonShootableObstacles(-10);
         }
         if (obs.equals(nonShootObs2)){
-            nonShootObs2 = new NonShootableObstacles();
+            nonShootObs2 = new NonShootableObstacles(-10);
+        }
+        if (obs.equals(nonShootObs3)){
+            nonShootObs3 = new NonShootableObstacles(-10);
         }
         if (obs.equals(shootObs)){
-            shootObs = new ShootableObstacles();
+            shootObs = new ShootableObstacles(-10);
         }
 
 
@@ -174,10 +186,11 @@ public class Game {
         weapon.setSpeed(0);
         weaponCountdown -= 1;
     }
-    public void removeWeapon(){
+    public void removeWeapon(Weapon weapon){
         System.out.println(weaponCountdown);
         if(weaponCountdown == 0){
             weaponPickedUp = false;
+            shotgun.setSpeed(2);
 
         }
     }

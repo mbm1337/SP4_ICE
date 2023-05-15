@@ -12,8 +12,8 @@ public class NonShootableObstacles extends Obstacles {
 
 
 
-    public NonShootableObstacles(){
-        yPosition = -20;
+    public NonShootableObstacles(int yPosition){
+        this.yPosition = yPosition ;
         speed += 0.1;
        int x = random.nextInt(3);
        switch (x) {

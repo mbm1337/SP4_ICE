@@ -6,9 +6,9 @@ public class ShootableObstacles extends Obstacles {
     float speed = 2;
     Random random = new Random();
 
-    public ShootableObstacles() {
+    public ShootableObstacles(int yPosition) {
         health = 10;
-        yPosition = -100;
+        this.yPosition = yPosition;
         speed += 0.1;
         int x = random.nextInt(3);
         switch (x) {

@@ -13,7 +13,7 @@ public class Shotgun extends Weapon {
    public Shotgun(){
        this.runTime = 10;
        this.damage = 5;
-       yPosition = -20;
+       yPosition = -1000;
 
        int x = random.nextInt(3);
        switch (x) {
