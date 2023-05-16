@@ -1,26 +1,11 @@
+import processing.core.PApplet;
+
 public class Lane {
 
     private int xPosition;
 
     public Lane(int xPosition){
         this.xPosition = xPosition;
-
-    }
-    Weapon weapon;
-
-    Obstacles obstacles;
-
-    Gem gem;
-
-    public void spawnWeapon() {
-
-    }
-
-    public void spawnGem() {
-
-    }
-
-    public void spawnObstacle() {
 
     }
 
@@ -30,5 +15,6 @@ public class Lane {
         Main.p.rect(xPosition, 0, 200, 800);
         Main.p.rect(xPosition, 0, 200, 800);
         Main.p.rect(xPosition, 0, 200, 800);
+
     }
 }

@@ -1,12 +1,9 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-
 import util.*;
 
 
 public class Game {
     int weaponCountdown;
-    int xPosition;
     String[][] leaderboard;
     TextUI ui;
     FileIO io;
@@ -66,6 +63,9 @@ public class Game {
     }
 
     public void startGame(){
+        Main.p.background(255);
+        score.setIsRunning(true);
+        score.draw();
         drawCourse();
         p.draw();
         nonShootObs1.draw();
@@ -76,6 +76,8 @@ public class Game {
         checkObsPosition(nonShootObs3);
         shootObs.draw();
         checkObsPosition(shootObs);
+        speedUp();
+
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
         if(weaponPickedUp){
@@ -115,9 +117,11 @@ public class Game {
             for (int i = leaderboard.length - 1; i > index; i--) {
                 leaderboard[i] = leaderboard[i - 1];
             }
+            leaderboard[index][0] = name;
+            leaderboard[index][1] = String.valueOf(score.getScore());
+        } else {
+            // do something else. for at håndtere hvis den ikke er -1.
         }
-        leaderboard[index][0] = name;
-        leaderboard[index][1] = String.valueOf(score.getScore());
         if (leaderboard.length > 20) {
             leaderboard = Arrays.copyOf(leaderboard, 20);
         }
@@ -157,16 +161,20 @@ public class Game {
 
     public void spawnNewObs(Obstacles obs){
         if (obs.equals(nonShootObs1)){
-            nonShootObs1 = new NonShootableObstacles(-10);
+            nonShootObs1.randomLaneSelector();
+            nonShootObs1.setYPosition(-10);
         }
         if (obs.equals(nonShootObs2)){
-            nonShootObs2 = new NonShootableObstacles(-10);
+            nonShootObs2.randomLaneSelector();
+            nonShootObs2.setYPosition(-10);
         }
         if (obs.equals(nonShootObs3)){
-            nonShootObs3 = new NonShootableObstacles(-10);
+            nonShootObs3.randomLaneSelector();
+            nonShootObs3.setYPosition(-10);
         }
         if (obs.equals(shootObs)){
-            shootObs = new ShootableObstacles(-10);
+            shootObs.randomLaneSelector();
+            shootObs.setYPosition(-10);
         }
     }
 
@@ -212,8 +220,15 @@ public class Game {
         }
     }
 
-    public void displayScore(int score){
-        Main.p.text(score,450,450);
+    public void speedUp(){
+        if(shootObs.getSpeed()<10) {
+            if (Main.p.frameCount % 100 == 0) {
+                nonShootObs3.speedUp();
+                nonShootObs2.speedUp();
+                nonShootObs1.speedUp();
+                shootObs.speedUp();
+            }
+        }
     }
     public boolean onImpact(){
         int height = 60;

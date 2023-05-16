@@ -1,6 +1,5 @@
 public abstract class Weapon {
-    private int runTime;
-    private int damage;
+
     private int xPosition;
     private int yPosition;
     private int speed;
