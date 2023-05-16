@@ -91,7 +91,7 @@ public class Game {
 
     public void displayLeaderboard() {
         for (String[] s : leaderboard ) {
-            ui.displayMessage(s[0] + " = " +s[1]);
+            ui.displayMessage(s[0] + " - " +s[1]);
         }
         if(ui.getInput("Press Q to get back").equalsIgnoreCase("Q")){
             mainMenu();
@@ -106,25 +106,19 @@ public class Game {
     }
 
     private void saveScoreToLeaderboard() {
-        int index = -1;
+        int index = 0;
         for (int i = 0; i < leaderboard.length; i++) {
-            if (leaderboard[i][1] != null && Integer.parseInt(leaderboard[i][1]) < score.getScore()) {
-                index = i;
+            if (Integer.parseInt(leaderboard[i][1]) < score.getScore()) {
                 break;
             }
+            index++;
         }
-        if (index != -1) {
-            for (int i = leaderboard.length - 1; i > index; i--) {
-                leaderboard[i] = leaderboard[i - 1];
-            }
-            leaderboard[index][0] = name;
-            leaderboard[index][1] = String.valueOf(score.getScore());
-        } else {
-            // do something else. for at håndtere hvis den ikke er -1.
-        }
-        if (leaderboard.length > 20) {
-            leaderboard = Arrays.copyOf(leaderboard, 20);
-        }
+        String[] newPlayer = {name, String.valueOf(score.getScore())};
+        String[][] updatedLeaderboard = new String [leaderboard.length+1][2];
+        System.arraycopy(leaderboard,0,updatedLeaderboard,0,index);
+        updatedLeaderboard[index] = newPlayer;
+        System.arraycopy(leaderboard,index,updatedLeaderboard,index+1,leaderboard.length-index-1);
+        leaderboard = updatedLeaderboard;
     }
 
     public void drawCourse(){
@@ -230,21 +224,22 @@ public class Game {
             }
         }
     }
+
     public boolean onImpact(){
         int height = 60;
-        if(nonShootObs1.getYPosition()+height == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || nonShootObs1.getYPosition() == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || nonShootObs1.getYPosition() == p.getYPosition()+40 && nonShootObs1.getXPosition()+25 == p.getXPosition()){
+        if((int)nonShootObs1.getYPosition()+height == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || (int)nonShootObs1.getYPosition() == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || (int)nonShootObs1.getYPosition() == p.getYPosition()+40 && nonShootObs1.getXPosition()+25 == p.getXPosition()){
             return true;
         }
-        else if(nonShootObs2.getYPosition()+height == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || nonShootObs2.getYPosition() == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || nonShootObs2.getYPosition() == p.getYPosition()+40 && nonShootObs2.getXPosition()+25 == p.getXPosition()){
+        else if((int)nonShootObs2.getYPosition()+height == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition()+40 && nonShootObs2.getXPosition()+25 == p.getXPosition()){
             return true;
         }
-        else if(nonShootObs3.getYPosition()+height == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || nonShootObs3.getYPosition() == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || nonShootObs3.getYPosition() == p.getYPosition()+40 && nonShootObs3.getXPosition()+25 == p.getXPosition()){
+        else if((int)nonShootObs3.getYPosition()+height == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition()+40 && nonShootObs3.getXPosition()+25 == p.getXPosition()){
             return true;
         }
         return false;
     }
     public void onDeath(){
-        if (onImpact() == true){
+        if (onImpact()){
             Main.p.noLoop();
         }
     }
