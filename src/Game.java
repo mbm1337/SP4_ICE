@@ -65,6 +65,9 @@ public class Game {
     }
 
     public void startGame(){
+        Main.p.background(255);
+        score.setIsRunning(true);
+        score.draw();
         drawCourse();
         p.draw();
         nonShootObs1.draw();
@@ -112,10 +115,18 @@ public class Game {
             for (int i = leaderboard.length - 1; i > index; i--) {
                 leaderboard[i] = leaderboard[i - 1];
             }
+            for(String[] s : leaderboard){
+                System.out.println(s[0]+s[1]);
+            }
+            leaderboard[index][0] = name;
+            leaderboard[index][1] = String.valueOf(score.getScore());
+        } else {
+            // do something else. for at håndtere hvis den ikke er -1.
         }
-        leaderboard[index][0] = name;
-        leaderboard[index][1] = String.valueOf(score.getScore());
         if (leaderboard.length > 20) {
+            for(String[] s : leaderboard){
+                System.out.println(s[0]+s[1]);
+            }
             leaderboard = Arrays.copyOf(leaderboard, 20);
         }
     }
@@ -207,9 +218,5 @@ public class Game {
         if(weapon.equals(shotgun)){
             shotgun = new Shotgun();
         }
-    }
-
-    public void displayScore(int score){
-        Main.p.text(score,450,450);
     }
 }

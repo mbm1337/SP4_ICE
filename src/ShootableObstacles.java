@@ -40,6 +40,7 @@ public class ShootableObstacles extends Obstacles {
         yPosition = yPosition + speed;
 
     }
+    public void obstacleDamge(int x){this.health -= x;}
     public int getXPosition(){
         return xPosition;
     }
