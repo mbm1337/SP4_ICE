@@ -64,6 +64,9 @@ public class Game {
     }
 
     public void startGame(){
+        Main.p.background(255);
+        score.setIsRunning(true);
+        score.draw();
         drawCourse();
         p.draw();
         nonShootObs1.draw();
@@ -75,7 +78,6 @@ public class Game {
         shootObs.draw();
         checkObsPosition(shootObs);
         speedUp();
-
 
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
@@ -115,11 +117,11 @@ public class Game {
             for (int i = leaderboard.length - 1; i > index; i--) {
                 leaderboard[i] = leaderboard[i - 1];
             }
+            leaderboard[index][0] = name;
+            leaderboard[index][1] = String.valueOf(score.getScore());
+        } else {
+            // do something else. for at håndtere hvis den ikke er -1.
         }
-
-        leaderboard[index][0] = name;
-        leaderboard[index][1] = String.valueOf(score.getScore());
-
         if (leaderboard.length > 20) {
             leaderboard = Arrays.copyOf(leaderboard, 20);
         }
@@ -230,4 +232,3 @@ public class Game {
     }
 
 }
-

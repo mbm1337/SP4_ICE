@@ -1,4 +1,5 @@
 import  java.lang.System;
+import java.util.Random;
 
 public class Score {
     int counter;
@@ -23,10 +24,14 @@ public class Score {
                 System.out.println(score);
                 timer = (int) System.currentTimeMillis();
             }
+            Main.p.clear();
+            Main.p.fill(200,0,0);
+            Main.p.textSize(45);
+            Main.p.text("Score:",20,400);
+            Main.p.text(score,20,450);
         }
-        Main.p.text(score,450,450);
     }
-
+    public void addScore(int score){this.score += score;}
     public int getScore(){
         return score;
     }
