@@ -1,8 +1,6 @@
 import java.util.Random;
 
 public class NonShootableObstacles extends Obstacles {
-
-    int numberOfObstacles;
     int xPosition;
     float yPosition;
     float speed;

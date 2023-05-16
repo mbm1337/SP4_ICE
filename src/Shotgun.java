@@ -1,8 +1,6 @@
 import java.util.Random;
 public class Shotgun extends Weapon {
 
-   private int runTime;
-   private int damage;
    private int xPosition;
    private int yPosition;
     //todo: lav speed hurtigere uden at den resetter;
@@ -11,8 +9,6 @@ public class Shotgun extends Weapon {
 
 
    public Shotgun(){
-       this.runTime = 10;
-       this.damage = 5;
        yPosition = -1000;
 
        int x = random.nextInt(3);

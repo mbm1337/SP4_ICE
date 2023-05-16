@@ -8,23 +8,6 @@ public class Lane {
         this.xPosition = xPosition;
 
     }
-    Weapon weapon;
-
-    Obstacles obstacles;
-
-    Gem gem;
-
-    public void spawnWeapon() {
-
-    }
-
-    public void spawnGem() {
-
-    }
-
-    public void spawnObstacle() {
-
-    }
 
     public void draw() {
         Main.p.strokeWeight(5);
