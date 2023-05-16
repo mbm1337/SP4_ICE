@@ -190,7 +190,7 @@ public class Game {
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
             weaponPickedUp = true;
-            weaponCountdown = 500;
+            weaponCountdown = 550;
         }
     }
 
