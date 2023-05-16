@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import util.*;
 
 
@@ -226,16 +225,41 @@ public class Game {
     }
 
     public boolean onImpact(){
-        int height = 60;
-        if((int)nonShootObs1.getYPosition()+height == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || (int)nonShootObs1.getYPosition() == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || (int)nonShootObs1.getYPosition() == p.getYPosition()+40 && nonShootObs1.getXPosition()+25 == p.getXPosition()){
+        int nonShootObsHeight = 60;
+        int shootObsRadius = 50;
+        if(        (int)nonShootObs1.getYPosition()+nonShootObsHeight >= p.getYPosition()
+                && (int)nonShootObs1.getYPosition() <= p.getYPosition()
+                && nonShootObs1.getXPosition()+25 == p.getXPosition()
+                || (int)nonShootObs1.getYPosition()+nonShootObsHeight >= p.getYPosition()+40
+                && (int)nonShootObs1.getYPosition() <= p.getYPosition()+40
+                && nonShootObs1.getXPosition()+25 == p.getXPosition()) {
             return true;
         }
-        else if((int)nonShootObs2.getYPosition()+height == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition()+40 && nonShootObs2.getXPosition()+25 == p.getXPosition()){
+        else if(   (int)nonShootObs2.getYPosition()+nonShootObsHeight >= p.getYPosition()
+                && (int)nonShootObs2.getYPosition() <= p.getYPosition()
+                && nonShootObs2.getXPosition()+25 == p.getXPosition()
+                || (int)nonShootObs2.getYPosition()+nonShootObsHeight >= p.getYPosition()+40
+                && (int)nonShootObs2.getYPosition() <= p.getYPosition()+40
+                && nonShootObs2.getXPosition()+25 == p.getXPosition()){
             return true;
         }
-        else if((int)nonShootObs3.getYPosition()+height == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition()+40 && nonShootObs3.getXPosition()+25 == p.getXPosition()){
+        else if(   (int)nonShootObs3.getYPosition()+nonShootObsHeight >= p.getYPosition()
+                && (int)nonShootObs3.getYPosition() <= p.getYPosition()
+                && nonShootObs3.getXPosition()+25 == p.getXPosition()
+                || (int)nonShootObs3.getYPosition()+nonShootObsHeight >= p.getYPosition()+40
+                && (int)nonShootObs3.getYPosition() <= p.getYPosition()+40
+                && nonShootObs3.getXPosition()+25 == p.getXPosition()){
             return true;
         }
+        else if (  (int)shootObs.getYPosition()+shootObsRadius >= p.getYPosition()
+                && (int)shootObs.getYPosition()-shootObsRadius <= p.getYPosition()
+                && shootObs.getXPosition()-shootObsRadius >= p.getXPosition()
+                || (int)shootObs.getYPosition()+shootObsRadius >= p.getYPosition() + 40
+                && (int)shootObs.getYPosition()-shootObsRadius <= p.getYPosition() + 40
+                && shootObs.getXPosition()-shootObsRadius >= p.getXPosition()) {
+            return true;
+
+        } else
         return false;
     }
     public void onDeath(){
