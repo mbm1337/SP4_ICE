@@ -24,6 +24,8 @@ public class Score {
                 timer = (int) System.currentTimeMillis();
             }
             Main.p.fill(200,0,0);
+            Main.p.textSize(20);
+            Main.p.text("Press Esc to quit!",20,350);
             Main.p.textSize(45);
             Main.p.text("Score:",20,400);
             Main.p.text(score,20,450);
