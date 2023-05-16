@@ -5,6 +5,7 @@ public class Shotgun extends Weapon {
    private int damage;
    private int xPosition;
    private int yPosition;
+    //todo: lav speed hurtigere uden at den resetter;
    private int speed = 2;
    Random random = new Random();
 
@@ -45,6 +46,7 @@ public class Shotgun extends Weapon {
        Main.p.fill(255,0,0);
        Main.p.text("Shotgun",xPosition-7,yPosition-4);
        yPosition = yPosition + speed;
+       speed += 0.01;
 
     }
     public void setSpeed(int speed){

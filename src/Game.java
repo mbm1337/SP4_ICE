@@ -19,8 +19,7 @@ public class Game {
     Shotgun shotgun;
     Score score;
     private boolean weaponPickedUp;
-
-
+    Projectiles projectile;
 
     public void mainMenu(){
         io = new FileIO();
@@ -86,7 +85,8 @@ public class Game {
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
-
+        onImpact();
+        onDeath();
     }
 
     public void displayLeaderboard() {
@@ -230,5 +230,27 @@ public class Game {
             }
         }
     }
+    public boolean onImpact(){
+        int height = 60;
+        if(nonShootObs1.getYPosition()+height == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || nonShootObs1.getYPosition() == p.getYPosition() && nonShootObs1.getXPosition()+25 == p.getXPosition() || nonShootObs1.getYPosition() == p.getYPosition()+40 && nonShootObs1.getXPosition()+25 == p.getXPosition()){
+            return true;
+        }
+        else if(nonShootObs2.getYPosition()+height == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || nonShootObs2.getYPosition() == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || nonShootObs2.getYPosition() == p.getYPosition()+40 && nonShootObs2.getXPosition()+25 == p.getXPosition()){
+            return true;
+        }
+        else if(nonShootObs3.getYPosition()+height == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || nonShootObs3.getYPosition() == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || nonShootObs3.getYPosition() == p.getYPosition()+40 && nonShootObs3.getXPosition()+25 == p.getXPosition()){
+            return true;
+        }
+        return false;
+    }
+    public void onDeath(){
+        if (onImpact() == true){
+            Main.p.noLoop();
+        }
+    }
+    public void shoot(){
+        if(weaponPickedUp){
 
+        }
+    }
 }

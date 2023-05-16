@@ -6,12 +6,8 @@ public class Player {
     private int height = 800;
     private int xPosition;
     private int yPosition;
-
     private Lane currentLane;
-
-
-
-    String name;
+    private String name;
 
     public Player(String name){
         this.name = name;
@@ -38,21 +34,16 @@ public class Player {
     public void onGemPickUp(){
 
     }
-    public void onImpact(){
 
-    }
     public void draw(){
 
         Main.p.fill(150);
         Main.p.rect(xPosition,yPosition,100,40);
         Main.p.fill(100,70,50);
         Main.p.rect(xPosition+35,yPosition+10,30,20);
-
     }
 
-
     public Lane getCurrentLane() {
-
         return currentLane;
     }
 

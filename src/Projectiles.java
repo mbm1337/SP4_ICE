@@ -1,27 +1,26 @@
 public class Projectiles {
-    private int speed;
-    private int position;
+    private int size;
+    private int speed = 4;
+    private int xPosition;
+    private int yPosition;
     private int fireRate;
-    private boolean isFiring;
 
-    public Projectiles(int fireRate, int position){
-        this.speed = 2;
-        this.fireRate = fireRate;
-        this.position = position;
-        this.isFiring = false;
-        //todo: this.speed = lav speed
+    Game game = new Game();
+
+    public Projectiles(){
+
+        yPosition = game.p.getYPosition();
+        xPosition = game.p.getXPosition();
+
         
     }
-
-    public void onImpact(ShootableObstacles obstacles){
+    public void onImpact(){
 
     }
 
-    public boolean checkCollision(ShootableObstacles obstacles){
-        if(position <= obstacles.xPosition){
-            return true;
-        }
-        return false;
+    public void draw(){
+        Main.p.fill(0);
+        Main.p.ellipse(xPosition,yPosition,5,5);
+        yPosition = yPosition - speed;
     }
-
 }

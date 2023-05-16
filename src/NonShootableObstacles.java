@@ -1,9 +1,5 @@
 import java.util.Random;
 
-import static java.lang.Math.sin;
-import static processing.core.PApplet.map;
-
-
 public class NonShootableObstacles extends Obstacles {
 
     int numberOfObstacles;
@@ -11,7 +7,6 @@ public class NonShootableObstacles extends Obstacles {
     float yPosition;
     float speed;
     Random random = new Random();
-
 
 
 
@@ -31,18 +26,10 @@ public class NonShootableObstacles extends Obstacles {
         yPosition = yPosition+speed;
 
     }
-    public int getXPosition(){
-        return xPosition;
-    }
 
     @Override
     public void speedUp() {
             this.speed = (float) (this.speed + 0.1);
-    }
-
-
-    public float getYPosition(){
-        return yPosition;
     }
 
     public void setYPosition(float yPosition) {
@@ -65,5 +52,10 @@ public class NonShootableObstacles extends Obstacles {
         }
 
     }
-
+    public int getXPosition(){
+        return xPosition;
+    }
+    public float getYPosition(){
+        return yPosition;
+    }
 }
