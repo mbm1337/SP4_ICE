@@ -3,26 +3,15 @@ public class ShootableObstacles extends Obstacles {
     int health;
     int xPosition;
     float yPosition;
-    float speed = 2;
+    float speed;
     Random random = new Random();
 
     public ShootableObstacles(int yPosition) {
         health = 10;
+        this.speed = 2;
         this.yPosition = yPosition;
-        speed += 0.1;
-        int x = random.nextInt(3);
-        switch (x) {
-            case 0:
-                xPosition = 300;
-                break;
-            case 1:
-                xPosition = 500;
-                break;
-            case 2:
-                xPosition = 700;
-                break;
-            default:
-        }
+        randomLaneSelector();
+
     }
 
     public void onDeath(){
@@ -43,7 +32,38 @@ public class ShootableObstacles extends Obstacles {
     public int getXPosition(){
         return xPosition;
     }
+
+    @Override
+    public void speedUp() {
+            this.speed = (float) (this.speed + 0.1);
+    }
+
+
     public float getYPosition(){
         return yPosition;
+    }
+
+    public void setYPosition(float yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void randomLaneSelector() {
+        int x = random.nextInt(3);
+        switch (x) {
+            case 0:
+                xPosition = 300;
+                break;
+            case 1:
+                xPosition = 500;
+                break;
+            case 2:
+                xPosition = 700;
+                break;
+            default:
+        }
     }
 }

@@ -1,33 +1,25 @@
 import java.util.Random;
 
+import static java.lang.Math.sin;
+import static processing.core.PApplet.map;
+
+
 public class NonShootableObstacles extends Obstacles {
 
     int numberOfObstacles;
     int xPosition;
     float yPosition;
-    float speed = 2;
-    int upperRandom  = 3;
-    int lowerRandom = 1;
+    float speed;
     Random random = new Random();
+
 
 
 
     public NonShootableObstacles(int yPosition){
         this.yPosition = yPosition ;
-        speed += 0.1;
-       int x = random.nextInt(3);
-       switch (x) {
-           case 0:
-               xPosition = 225;
-               break;
-           case 1:
-               xPosition = 425;
-               break;
-           case 2:
-               xPosition = 625;
-               break;
-           default:
-       }
+        this.speed = 2;
+        randomLaneSelector();
+
     }
     public void draw(){
         Main.p.fill(255,0,0);
@@ -42,7 +34,36 @@ public class NonShootableObstacles extends Obstacles {
     public int getXPosition(){
         return xPosition;
     }
+
+    @Override
+    public void speedUp() {
+            this.speed = (float) (this.speed + 0.1);
+    }
+
+
     public float getYPosition(){
         return yPosition;
     }
+
+    public void setYPosition(float yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public void randomLaneSelector(){
+        int x = random.nextInt(3);
+        switch (x) {
+            case 0:
+                xPosition = 225;
+                break;
+            case 1:
+                xPosition = 425;
+                break;
+            case 2:
+                xPosition = 625;
+                break;
+            default:
+        }
+
+    }
+
 }

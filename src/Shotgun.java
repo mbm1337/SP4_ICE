@@ -7,7 +7,6 @@ public class Shotgun extends Weapon {
    private int yPosition;
    private int speed = 2;
    Random random = new Random();
-   Game game = new Game();
 
 
    public Shotgun(){

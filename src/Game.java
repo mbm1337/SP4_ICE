@@ -1,12 +1,9 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-
 import util.*;
 
 
 public class Game {
     int weaponCountdown;
-    int xPosition;
     String[][] leaderboard;
     TextUI ui;
     FileIO io;
@@ -22,6 +19,8 @@ public class Game {
     Shotgun shotgun;
     Score score;
     private boolean weaponPickedUp;
+
+
 
     public void mainMenu(){
         io = new FileIO();
@@ -75,6 +74,9 @@ public class Game {
         checkObsPosition(nonShootObs3);
         shootObs.draw();
         checkObsPosition(shootObs);
+        speedUp();
+
+
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
         if(weaponPickedUp){
@@ -82,6 +84,7 @@ public class Game {
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
+
     }
 
     public void displayLeaderboard() {
@@ -156,16 +159,20 @@ public class Game {
 
     public void spawnNewObs(Obstacles obs){
         if (obs.equals(nonShootObs1)){
-            nonShootObs1 = new NonShootableObstacles(-10);
+            nonShootObs1.randomLaneSelector();
+            nonShootObs1.setYPosition(-10);
         }
         if (obs.equals(nonShootObs2)){
-            nonShootObs2 = new NonShootableObstacles(-10);
+            nonShootObs2.randomLaneSelector();
+            nonShootObs2.setYPosition(-10);
         }
         if (obs.equals(nonShootObs3)){
-            nonShootObs3 = new NonShootableObstacles(-10);
+            nonShootObs3.randomLaneSelector();
+            nonShootObs3.setYPosition(-10);
         }
         if (obs.equals(shootObs)){
-            shootObs = new ShootableObstacles(-10);
+            shootObs.randomLaneSelector();
+            shootObs.setYPosition(-10);
         }
     }
 
@@ -210,4 +217,17 @@ public class Game {
             shotgun = new Shotgun();
         }
     }
+
+    public void speedUp(){
+        if(shootObs.getSpeed()<10) {
+            if (Main.p.frameCount % 100 == 0) {
+                nonShootObs3.speedUp();
+                nonShootObs2.speedUp();
+                nonShootObs1.speedUp();
+                shootObs.speedUp();
+            }
+        }
+    }
+
 }
+

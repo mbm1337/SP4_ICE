@@ -1,3 +1,5 @@
+import processing.core.PApplet;
+
 public class Lane {
 
     private int xPosition;
@@ -30,5 +32,6 @@ public class Lane {
         Main.p.rect(xPosition, 0, 200, 800);
         Main.p.rect(xPosition, 0, 200, 800);
         Main.p.rect(xPosition, 0, 200, 800);
+
     }
 }
