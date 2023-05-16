@@ -4,8 +4,9 @@ public class NonShootableObstacles extends Obstacles {
 
     int numberOfObstacles;
     int xPosition;
-    float yPosition;
-    float speed = 2;
+    int yPosition;
+    //todo: lav speed hurtigere uden at den resetter;
+    int speed = 2;
     int upperRandom  = 3;
     int lowerRandom = 1;
     Random random = new Random();
@@ -14,7 +15,8 @@ public class NonShootableObstacles extends Obstacles {
 
     public NonShootableObstacles(int yPosition){
         this.yPosition = yPosition ;
-        speed += 0.1;
+
+
        int x = random.nextInt(3);
        switch (x) {
            case 0:
@@ -37,12 +39,12 @@ public class NonShootableObstacles extends Obstacles {
         Main.p.fill(0);
         Main.p.text("Danger",xPosition+5,yPosition+40);
         yPosition = yPosition+speed;
-
+        speed += 0.01;
     }
     public int getXPosition(){
         return xPosition;
     }
-    public float getYPosition(){
+    public int getYPosition(){
         return yPosition;
     }
 }

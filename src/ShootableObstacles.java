@@ -2,14 +2,15 @@ import java.util.Random;
 public class ShootableObstacles extends Obstacles {
     int health;
     int xPosition;
-    float yPosition;
-    float speed = 2;
+    int yPosition;
+    //todo: lav speed hurtigere uden at den resetter;
+    int speed = 2;
     Random random = new Random();
 
     public ShootableObstacles(int yPosition) {
         health = 10;
         this.yPosition = yPosition;
-        speed += 0.1;
+
         int x = random.nextInt(3);
         switch (x) {
             case 0:
@@ -38,12 +39,14 @@ public class ShootableObstacles extends Obstacles {
         Main.p.fill(30,60,10);
         Main.p.ellipse(xPosition,yPosition,30,30);
         yPosition = yPosition + speed;
+        speed += 0.01;
+
 
     }
     public int getXPosition(){
         return xPosition;
     }
-    public float getYPosition(){
+    public int getYPosition(){
         return yPosition;
     }
 }
