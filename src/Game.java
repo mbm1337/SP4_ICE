@@ -105,6 +105,8 @@ public class Game {
     }
 
     private void saveScoreToLeaderboard() {
+        String[] newPlayer = {name, String.valueOf(score.getScore())};
+        String[][] updatedLeaderboard = new String[leaderboard.length + 1][2];
         int index = 0;
         for (int i = 0; i < leaderboard.length; i++) {
             if (Integer.parseInt(leaderboard[i][1]) < score.getScore()) {
@@ -112,12 +114,20 @@ public class Game {
             }
             index++;
         }
-        String[] newPlayer = {name, String.valueOf(score.getScore())};
-        String[][] updatedLeaderboard = new String [leaderboard.length+1][2];
-        System.arraycopy(leaderboard,0,updatedLeaderboard,0,index);
-        updatedLeaderboard[index] = newPlayer;
-        System.arraycopy(leaderboard,index,updatedLeaderboard,index+1,leaderboard.length-index-1);
+        if (index == leaderboard.length) {
+            updatedLeaderboard = Arrays.copyOf(leaderboard, leaderboard.length + 1);
+            updatedLeaderboard[leaderboard.length] = newPlayer;
+        } else {
+            System.arraycopy(leaderboard, 0, updatedLeaderboard, 0, index);
+
+            // Insert the new player at the insertion index
+            updatedLeaderboard[index] = newPlayer;
+
+            // Copy remaining elements after the insertion index
+            System.arraycopy(leaderboard, index, updatedLeaderboard, index + 1, leaderboard.length - index-1);
+        }
         leaderboard = updatedLeaderboard;
+        leaderboard = Arrays.copyOf(leaderboard, leaderboard.length-1);
     }
 
     public void drawCourse(){
