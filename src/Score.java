@@ -21,10 +21,8 @@ public class Score {
             if ((int) System.currentTimeMillis() - timer > duration) {
                 counter++;
                 score = counter * 100;
-                System.out.println(score);
                 timer = (int) System.currentTimeMillis();
             }
-            Main.p.clear();
             Main.p.fill(200,0,0);
             Main.p.textSize(45);
             Main.p.text("Score:",20,400);
