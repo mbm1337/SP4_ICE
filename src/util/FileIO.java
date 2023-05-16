@@ -14,42 +14,28 @@ public class FileIO {
     Scanner scan;
 
     public String[][] readLeaderBoardData(String path) {
-       // ArrayList<String> data = new ArrayList<>(20);
         String[][] namesScores = new String[20][2];
         int x = 0;
         try {
             file = new File(path);
             scan = new Scanner(file);
-            scan.nextLine(); // ignore header in csv
+            scan.nextLine(); // ignore header
             while (scan.hasNextLine()) {
-
                 String line = scan.nextLine();
-                String[] s = line.split(":");
-                namesScores[x][0] = s[0];
-                namesScores[x][1] = s[1];
-                x+=1;
-               // data.add(line);
+                if(!line.startsWith("null:null")) {
+                    String[] s = line.split(":");
+                    namesScores[x][0] = s[0];
+                    namesScores[x][1] = s[1];
+                    x += 1;
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("The file was not found");
         }
-        Comparator<String[]> scoreComparator = new Comparator<String[]>() {
-            @Override
-            public int compare(String[] s1, String[] s2) {
-                // Split the strings into name and score
-                int score1 = Integer.parseInt(s1[1]);
-                int score2 = Integer.parseInt(s2[1]);
-                //compare scores and return unless the score is the same. then sort by name.
-                if (score1 == score2) {
-                    return s1[0].compareTo(s2[0]);
-                }
-                //compare scores and return them.
-                return Integer.compare(score2, score1);
-            }
-        };
-
-        Arrays.sort(namesScores, scoreComparator);
+        //Sort the array. by score. in reverse natural order.
+        Arrays.sort(namesScores, Comparator.comparingInt(arr -> -1 * Integer.parseInt(arr[1])));
         return namesScores;
+
     }
     public void saveLeaderBoardData(String path, String[][] data){
         try {
