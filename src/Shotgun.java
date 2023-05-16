@@ -4,8 +4,8 @@ public class Shotgun extends Weapon {
    private int runTime;
    private int damage;
    private int xPosition;
-   private float yPosition;
-   private float speed = 2;
+   private int yPosition;
+   private int speed = 2;
    Random random = new Random();
    Game game = new Game();
 
@@ -13,8 +13,7 @@ public class Shotgun extends Weapon {
    public Shotgun(){
        this.runTime = 10;
        this.damage = 5;
-       yPosition = -20;
-       speed += 0.1;
+       yPosition = -1000;
 
        int x = random.nextInt(3);
        switch (x) {
@@ -42,27 +41,27 @@ public class Shotgun extends Weapon {
     public void draw(){
        Main.p.fill(50);
        Main.p.strokeWeight(1);
-       Main.p.rect(xPosition,yPosition,20,45);
+       Main.p.rect(xPosition,yPosition,20,40);
        Main.p.textSize(10);
        Main.p.fill(255,0,0);
        Main.p.text("Shotgun",xPosition-7,yPosition-4);
        yPosition = yPosition + speed;
 
     }
-    public void setSpeed(float speed){
+    public void setSpeed(int speed){
        this.speed = speed;
     }
     public int getXPosition(){
         return xPosition;
     }
-    public float getYPosition(){
+    public int getYPosition(){
         return yPosition;
     }
     public int setXPosition(int xPosition){
        this.xPosition = xPosition;
         return xPosition;
     }
-    public float setYPosition(float yPosition){
+    public int setYPosition(int yPosition){
        this.yPosition = yPosition;
         return yPosition;
     }

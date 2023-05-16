@@ -1,15 +1,14 @@
 import java.util.Random;
 public class ShootableObstacles extends Obstacles {
     int health;
-    int numberOfObstacles;
     int xPosition;
     float yPosition;
     float speed = 2;
     Random random = new Random();
 
-    public ShootableObstacles() {
+    public ShootableObstacles(int yPosition) {
         health = 10;
-        yPosition = -60;
+        this.yPosition = yPosition;
         speed += 0.1;
         int x = random.nextInt(3);
         switch (x) {

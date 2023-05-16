@@ -2,13 +2,14 @@ public class Player {
 
     private int score;
     private boolean haveWeapon;
-    private int position;
     private int width = 1000;
     private int height = 800;
     private int xPosition;
-    private float yPosition;
+    private int yPosition;
 
     private Lane currentLane;
+
+
 
     String name;
 
@@ -29,9 +30,6 @@ public class Player {
         }else if (currentLane == leftLane){
             xPosition = 250;
         }
-
-    }
-    public void switchLaneLeft(){
 
     }
     public void onKill(){
@@ -64,15 +62,16 @@ public class Player {
     public int getXPosition(){
         return xPosition;
     }
-    public float getYPosition(){
+    public int getYPosition(){
         return yPosition;
     }
     public int setXPosition(int xPosition){
         this.xPosition = xPosition;
         return xPosition;
     }
-    public float setYPosition(float yPosition){
+    public int setYPosition(int yPosition){
         this.yPosition = yPosition;
         return yPosition;
     }
+
 }
