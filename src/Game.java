@@ -1,4 +1,5 @@
 import util.*;
+import java.util.Arrays;
 
 
 public class Game {
@@ -263,10 +264,10 @@ public class Game {
         }
         else if (  (int)shootObs.getYPosition()+shootObsRadius >= p.getYPosition()
                 && (int)shootObs.getYPosition()-shootObsRadius <= p.getYPosition()
-                && shootObs.getXPosition()-shootObsRadius >= p.getXPosition()
+                && shootObs.getXPosition()-shootObsRadius == p.getXPosition()
                 || (int)shootObs.getYPosition()+shootObsRadius >= p.getYPosition() + 40
                 && (int)shootObs.getYPosition()-shootObsRadius <= p.getYPosition() + 40
-                && shootObs.getXPosition()-shootObsRadius >= p.getXPosition()) {
+                && shootObs.getXPosition()-shootObsRadius == p.getXPosition()) {
             return true;
 
         } else
