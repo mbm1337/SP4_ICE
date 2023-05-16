@@ -113,8 +113,10 @@ public class Game {
                 leaderboard[i] = leaderboard[i - 1];
             }
         }
+
         leaderboard[index][0] = name;
         leaderboard[index][1] = String.valueOf(score.getScore());
+
         if (leaderboard.length > 20) {
             leaderboard = Arrays.copyOf(leaderboard, 20);
         }
@@ -207,9 +209,5 @@ public class Game {
         if(weapon.equals(shotgun)){
             shotgun = new Shotgun();
         }
-    }
-
-    public void displayScore(int score){
-        Main.p.text(score,450,450);
     }
 }
