@@ -3,23 +3,23 @@ import java.util.Arrays;
 
 
 public class Game {
-    int weaponCountdown;
-    String[][] leaderboard;
-    TextUI ui;
-    FileIO io;
-    String name;
-    Player p;
-    Lane leftLane;
-    Lane midLane;
-    Lane rightLane;
-    NonShootableObstacles nonShootObs1;
-    NonShootableObstacles nonShootObs2;
-    NonShootableObstacles nonShootObs3;
-    ShootableObstacles shootObs;
-    Shotgun shotgun;
-    Score score;
+    private int weaponCountdown;
+    private String[][] leaderboard;
+    private TextUI ui;
+    private FileIO io;
+    private String name;
+    public Player p;
+    private Lane leftLane;
+    private Lane midLane;
+    private Lane rightLane;
+    private NonShootableObstacles nonShootObs1;
+    private NonShootableObstacles nonShootObs2;
+    private NonShootableObstacles nonShootObs3;
+    private ShootableObstacles shootObs;
+    private Shotgun shotgun;
+    private Score score;
     private boolean weaponPickedUp;
-    Projectiles projectile;
+    private Projectiles projectile;
 
     public void mainMenu(){
         io = new FileIO();

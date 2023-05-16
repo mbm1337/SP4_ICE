@@ -1,4 +1,4 @@
 public class Gem {
-    int position;
+    private int position;
     
 }

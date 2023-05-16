@@ -1,16 +1,15 @@
 import  java.lang.System;
-import java.util.Random;
 
 public class Score {
-    int counter;
-    boolean isRunning;
-    int score;
-    long s = System.currentTimeMillis();
-    int duration = 1000;
-    int timer = 0;
+    private int counter;
+    private boolean isRunning;
+    private int score;
+    private long s = System.currentTimeMillis();
+    private int duration = 1000;
+    private int timer = 0;
 
 
-    Score() {
+    public Score() {
         counter = 0;
         isRunning = false;
         score = 0;

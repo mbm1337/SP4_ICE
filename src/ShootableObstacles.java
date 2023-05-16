@@ -1,10 +1,10 @@
 import java.util.Random;
 public class ShootableObstacles extends Obstacles {
-    int health;
-    int xPosition;
-    float yPosition;
-    float speed;
-    Random random = new Random();
+    private int health;
+    private int xPosition;
+    private float yPosition;
+    private float speed;
+    private Random random = new Random();
 
     public ShootableObstacles(int yPosition) {
         health = 10;
@@ -54,16 +54,11 @@ public class ShootableObstacles extends Obstacles {
     public void randomLaneSelector() {
         int x = random.nextInt(3);
         switch (x) {
-            case 0:
-                xPosition = 300;
-                break;
-            case 1:
-                xPosition = 500;
-                break;
-            case 2:
-                xPosition = 700;
-                break;
-            default:
+            case 0 -> xPosition = 300;
+            case 1 -> xPosition = 500;
+            case 2 -> xPosition = 700;
+            default -> {
+            }
         }
     }
 }
