@@ -92,12 +92,13 @@ public class Game {
             for(int i = 0; i < 20; i++){
                 p1[i].draw();
             }
-
+            updateProjectiles();
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
         onImpact();
         onDeath();
+        onProjectileImpact();
 
     }
 
@@ -309,4 +310,22 @@ public class Game {
             }
         }
     }
+    public boolean onProjectileImpact(){
+        int shootObsRadius = 50;
+        for (int i = 0; i < p1.length; i++) {
+            if (weaponPickedUp && p1[i].getYPosition() == (int)shootObs.getYPosition()+shootObsRadius
+                && p1[i].getXPosition()+50 == shootObs.getXPosition()-shootObsRadius){
+                onKill();
+                return true;
+            }
+        }
+        return false;
+    }
+    public void onKill(){
+        if(onProjectileImpact()){
+            spawnNewObs(shootObs);
+            score.addScore(500);
+        }
+    }
+
 }

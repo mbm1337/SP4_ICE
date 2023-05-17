@@ -10,6 +10,23 @@ public class Projectiles {
         xPosition = p.getXPosition();
         
     }
+
+    public int getXPosition() {
+        return xPosition;
+    }
+
+    public void setXPosition(int xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public int getYPosition() {
+        return yPosition;
+    }
+
+    public void setYPosition(int yPosition) {
+        this.yPosition = yPosition;
+    }
+
     public void draw(){
         Main.p.fill(0);
         Main.p.ellipse(xPosition, yPosition, 5, 5);
@@ -17,4 +34,5 @@ public class Projectiles {
 
 
     }
+
 }
