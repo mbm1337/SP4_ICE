@@ -12,12 +12,26 @@ public class Projectiles {
     }
     public void draw(){
         Main.p.fill(0);
-        Main.p.ellipse(xPosition, yPosition, 5, 5);
+        Main.p.ellipse(xPosition +50, yPosition+50, 5, 5);
         yPosition = yPosition - speed;
 
 
     }
-    public void ascend (){
 
+    public int getXPosition() {
+        return xPosition;
     }
+
+    public void setXPosition(int xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public int getYPosition() {
+        return yPosition;
+    }
+
+    public void setYPosition(int yPosition) {
+        this.yPosition = yPosition;
+    }
+
 }

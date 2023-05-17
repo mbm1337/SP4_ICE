@@ -89,10 +89,10 @@ public class Game {
 
         if(weaponPickedUp){
             fixedWeapon(shotgun);
-            for(int i = 0; i < 16; i++){
-                p1[i].draw();
+            for (int i = 0; i < p1.length; i++) {
+                    p1[i].draw();
             }
-
+            updateProjectiles();
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
@@ -288,6 +288,23 @@ public class Game {
     public void onDeath(){
         if (onImpact()){
             Main.p.noLoop();
+        }
+    }
+    public void updateProjectiles() {
+
+        if (Main.p.frameCount % 30 == 0) {
+            for (int i = 0; i < p1.length; i++) {
+                if (p1[i].getYPosition() < 0) {
+                    p1[i].setXPosition(p.getXPosition());
+                    p1[i].setYPosition(p.getYPosition());
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < p1.length; i++) {
+            if (p1[i].getYPosition() >= 0) {
+                p1[i].draw();
+            }
         }
     }
 }
