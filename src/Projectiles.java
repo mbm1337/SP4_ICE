@@ -17,7 +17,4 @@ public class Projectiles {
 
 
     }
-    public int getxPosition(){
-
-    }
 }

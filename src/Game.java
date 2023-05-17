@@ -291,7 +291,4 @@ public class Game {
             Main.p.noLoop();
         }
     }
-    public boolean onProjectileImpact(){
-        if()
-    }
 }
