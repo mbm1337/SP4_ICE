@@ -301,6 +301,7 @@ public class Game {
                 }
             }
         }
+        
         for (int i = 0; i < p1.length; i++) {
             if (p1[i].getYPosition() >= 0) {
                 p1[i].draw();
