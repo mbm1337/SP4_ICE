@@ -291,4 +291,22 @@ public class Game {
             Main.p.noLoop();
         }
     }
+    public void updateProjectiles() {
+
+        if (Main.p.frameCount % 30 == 0) {
+            for (int i = 0; i < p1.length; i++) {
+                if (p1[i].getYPosition() < 0) {
+                    p1[i].setXPosition(p.getXPosition());
+                    p1[i].setYPosition(p.getYPosition());
+                    break;
+                }
+            }
+        }
+        
+        for (int i = 0; i < p1.length; i++) {
+            if (p1[i].getYPosition() >= 0) {
+                p1[i].draw();
+            }
+        }
+    }
 }
