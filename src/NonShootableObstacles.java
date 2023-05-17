@@ -1,10 +1,10 @@
 import java.util.Random;
 
 public class NonShootableObstacles extends Obstacles {
-    int xPosition;
-    float yPosition;
-    float speed;
-    Random random = new Random();
+    private int xPosition;
+    private float yPosition;
+    private float speed;
+    private final Random random = new Random();
 
 
 
@@ -37,16 +37,11 @@ public class NonShootableObstacles extends Obstacles {
     public void randomLaneSelector(){
         int x = random.nextInt(3);
         switch (x) {
-            case 0:
-                xPosition = 225;
-                break;
-            case 1:
-                xPosition = 425;
-                break;
-            case 2:
-                xPosition = 625;
-                break;
-            default:
+            case 0 -> xPosition = 225;
+            case 1 -> xPosition = 425;
+            case 2 -> xPosition = 625;
+            default -> {
+            }
         }
 
     }

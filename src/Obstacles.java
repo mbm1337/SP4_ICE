@@ -1,7 +1,6 @@
 public abstract class Obstacles {
 
     int xPosition;
-    float speed;
     float yPosition;
 
 

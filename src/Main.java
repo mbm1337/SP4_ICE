@@ -1,10 +1,6 @@
 import processing.core.PApplet;
-import processing.event.KeyEvent;
-
 
 public class Main extends PApplet {
-    int width = 1000;
-    int height = 800;
     public static PApplet p;
 
     Game game;
@@ -14,6 +10,8 @@ public class Main extends PApplet {
     }
     @Override
     public void settings() {
+        int height = 800;
+        int width = 1000;
         size(width, height);
     }
     @Override

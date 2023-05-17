@@ -13,16 +13,11 @@ public class Shotgun extends Weapon {
 
        int x = random.nextInt(3);
        switch (x) {
-           case 0:
-               xPosition = 290;
-               break;
-           case 1:
-               xPosition = 490;
-               break;
-           case 2:
-               xPosition = 690;
-               break;
-           default:
+           case 0 -> xPosition = 290;
+           case 1 -> xPosition = 490;
+           case 2 -> xPosition = 690;
+           default -> {
+           }
        }
    }
 
