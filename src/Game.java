@@ -62,7 +62,7 @@ public class Game {
         shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
 
-        p1 = new Projectiles[16];
+        p1 = new Projectiles[20];
         for(int i = 0; i < p1.length; i++) {
             p1[i] = new Projectiles(p);
         }
@@ -89,7 +89,7 @@ public class Game {
 
         if(weaponPickedUp){
             fixedWeapon(shotgun);
-            for(int i = 0; i < 16; i++){
+            for(int i = 0; i < 20; i++){
                 p1[i].draw();
             }
 
@@ -243,6 +243,7 @@ public class Game {
                 nonShootObs2.speedUp();
                 nonShootObs1.speedUp();
                 shootObs.speedUp();
+
             }
         }
     }
@@ -289,5 +290,8 @@ public class Game {
         if (onImpact()){
             Main.p.noLoop();
         }
+    }
+    public boolean onProjectileImpact(){
+        if()
     }
 }

@@ -17,7 +17,7 @@ public class Projectiles {
 
 
     }
-    public void ascend (){
+    public int getxPosition(){
 
     }
 }

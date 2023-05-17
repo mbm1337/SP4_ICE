@@ -5,10 +5,6 @@ public abstract class Weapon {
     private int speed;
 
 
-    public abstract void shoot();
-
-    public abstract void removeWeapon();
-
     public int getXPosition(){
         return xPosition;
     }

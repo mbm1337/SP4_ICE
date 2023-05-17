@@ -21,14 +21,6 @@ public class Shotgun extends Weapon {
        }
    }
 
-    @Override
-    public void shoot() {
-
-    }
-
-    @Override
-    public void removeWeapon() {
-    }
     public void draw(){
        Main.p.fill(50);
        Main.p.strokeWeight(1);
@@ -37,7 +29,7 @@ public class Shotgun extends Weapon {
        Main.p.fill(255,0,0);
        Main.p.text("Shotgun",xPosition-7,yPosition-4);
        yPosition = yPosition + speed;
-       speed += 0.01;
+       speed += (float) 0.1;
 
     }
     public void setSpeed(int speed){
