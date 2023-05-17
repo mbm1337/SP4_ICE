@@ -1,7 +1,6 @@
 import util.*;
 import java.util.Arrays;
 
-
 public class Game {
     private int weaponCountdown;
     private String[][] leaderboard;
@@ -20,7 +19,6 @@ public class Game {
     private Score score;
     private boolean weaponPickedUp;
     private Projectiles[] p1;
-    private int timeInterval;
 
     public void mainMenu(){
         io = new FileIO();
@@ -89,9 +87,6 @@ public class Game {
 
         if(weaponPickedUp){
             fixedWeapon(shotgun);
-            for (int i = 0; i < p1.length; i++) {
-                    p1[i].draw();
-            }
             updateProjectiles();
         }
         removeWeapon(shotgun);
@@ -301,7 +296,7 @@ public class Game {
                 }
             }
         }
-        
+
         for (int i = 0; i < p1.length; i++) {
             if (p1[i].getYPosition() >= 0) {
                 p1[i].draw();

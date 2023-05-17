@@ -12,7 +12,7 @@ public class Projectiles {
     }
     public void draw(){
         Main.p.fill(0);
-        Main.p.ellipse(xPosition +50, yPosition+50, 5, 5);
+        Main.p.ellipse(xPosition, yPosition, 5, 5);
         yPosition = yPosition - speed;
 
 
