@@ -19,7 +19,8 @@ public class Game {
     private Shotgun shotgun;
     private Score score;
     private boolean weaponPickedUp;
-    private Projectiles projectile;
+    private Projectiles[] p1;
+    private int timeInterval;
 
     public void mainMenu(){
         io = new FileIO();
@@ -60,6 +61,12 @@ public class Game {
         nonShootObs3 = new NonShootableObstacles(-400);
         shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
+
+        p1 = new Projectiles[16];
+        for(int i = 0; i < p1.length; i++) {
+            p1[i] = new Projectiles(p);
+        }
+
     }
 
     public void startGame(){
@@ -77,16 +84,21 @@ public class Game {
         shootObs.draw();
         checkObsPosition(shootObs);
         speedUp();
-
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
+
         if(weaponPickedUp){
             fixedWeapon(shotgun);
+            for(int i = 0; i < 16; i++){
+                p1[i].draw();
+            }
+
         }
         removeWeapon(shotgun);
         checkWeaponPosition(shotgun);
         onImpact();
         onDeath();
+
     }
 
     public void displayLeaderboard() {
@@ -276,11 +288,6 @@ public class Game {
     public void onDeath(){
         if (onImpact()){
             Main.p.noLoop();
-        }
-    }
-    public void shoot(){
-        if(weaponPickedUp){
-
         }
     }
 }
