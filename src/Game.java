@@ -60,7 +60,7 @@ public class Game {
         shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
 
-        p1 = new Projectiles[16];
+        p1 = new Projectiles[20];
         for(int i = 0; i < p1.length; i++) {
             p1[i] = new Projectiles(p);
         }
@@ -93,6 +93,7 @@ public class Game {
         checkWeaponPosition(shotgun);
         onImpact();
         onDeath();
+        onProjectileImpact();
 
     }
 
@@ -238,6 +239,7 @@ public class Game {
                 nonShootObs2.speedUp();
                 nonShootObs1.speedUp();
                 shootObs.speedUp();
+
             }
         }
     }
@@ -303,4 +305,22 @@ public class Game {
             }
         }
     }
+    public boolean onProjectileImpact(){
+        int shootObsRadius = 50;
+        for (int i = 0; i < p1.length; i++) {
+            if (weaponPickedUp && p1[i].getYPosition() == (int)shootObs.getYPosition()+shootObsRadius
+                && p1[i].getXPosition()+50 == shootObs.getXPosition()-shootObsRadius){
+                onKill();
+                return true;
+            }
+        }
+        return false;
+    }
+    public void onKill(){
+        if(onProjectileImpact()){
+            spawnNewObs(shootObs);
+            score.addScore(500);
+        }
+    }
+
 }

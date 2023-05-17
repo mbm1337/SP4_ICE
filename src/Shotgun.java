@@ -21,14 +21,6 @@ public class Shotgun extends Weapon {
        }
    }
 
-    @Override
-    public void shoot() {
-
-    }
-
-    @Override
-    public void removeWeapon() {
-    }
     public void draw(){
        Main.p.fill(50);
        Main.p.strokeWeight(1);

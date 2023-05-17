@@ -1,9 +1,7 @@
 public class Projectiles {
-    private int size;
     private int speed = 4;
     private int xPosition;
     private int yPosition;
-    private int fireRate = 1;
 
     public Projectiles(Player p){
         yPosition = p.getYPosition();
