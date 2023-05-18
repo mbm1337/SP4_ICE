@@ -31,7 +31,7 @@ public class Score {
             Main.p.text(score,20,450);
         }
     }
-    public void addScore(int score){this.score += score;}
+    public void addScore(int score){this.counter += score/100;}
     public int getScore(){
         return score;
     }

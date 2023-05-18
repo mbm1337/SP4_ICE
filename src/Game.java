@@ -120,11 +120,7 @@ public class Game {
             updatedLeaderboard[leaderboard.length] = newPlayer;
         } else {
             System.arraycopy(leaderboard, 0, updatedLeaderboard, 0, index);
-
-            // Insert the new player at the insertion index
             updatedLeaderboard[index] = newPlayer;
-
-            // Copy remaining elements after the insertion index
             System.arraycopy(leaderboard, index, updatedLeaderboard, index + 1, leaderboard.length - index-1);
         }
         leaderboard = updatedLeaderboard;
@@ -243,7 +239,12 @@ public class Game {
         else if((int)nonShootObs2.getYPosition()+height == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition() && nonShootObs2.getXPosition()+25 == p.getXPosition() || (int)nonShootObs2.getYPosition() == p.getYPosition()+40 && nonShootObs2.getXPosition()+25 == p.getXPosition()){
             return true;
         }
-        else if((int)nonShootObs3.getYPosition()+height == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition() && nonShootObs3.getXPosition()+25 == p.getXPosition() || (int)nonShootObs3.getYPosition() == p.getYPosition()+40 && nonShootObs3.getXPosition()+25 == p.getXPosition()){
+        else if((int)nonShootObs3.getYPosition()+height == p.getYPosition()
+                && nonShootObs3.getXPosition()+25 == p.getXPosition()
+                || (int)nonShootObs3.getYPosition() == p.getYPosition()
+                && nonShootObs3.getXPosition()+25 == p.getXPosition()
+                || (int)nonShootObs3.getYPosition() == p.getYPosition()+40
+                && nonShootObs3.getXPosition()+25 == p.getXPosition()){
             return true;
         }
         return false;
