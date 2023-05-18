@@ -97,9 +97,6 @@ public class Game {
         onDeath();
         onProjectileImpact();
         onKill();
-
-        System.out.println(shotgun.getYPosition());
-
     }
 
     public void displayLeaderboard() {
@@ -198,7 +195,9 @@ public class Game {
     }
 
     public void pickUpWeapon(Weapon weapon,int diff){
-        if((int) weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition()) {
+        if(     (int)weapon.getYPosition()+40 >= p.getYPosition() &&
+                (int)weapon.getYPosition() <= p.getYPosition() &&
+                 weapon.getXPosition()-diff == p.getXPosition()) {
             weapon.setXPosition(p.getXPosition());
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
