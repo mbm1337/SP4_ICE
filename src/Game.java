@@ -296,7 +296,7 @@ public class Game {
     }
     public void updateProjectiles() {
 
-        if (Main.p.frameCount % 30 == 0) {
+        if (Main.p.frameCount % 50 == 0) {
             for (int i = 0; i < p1.length; i++) {
                 if (p1[i].getYPosition() < 0) {
                     p1[i].setXPosition(p.getXPosition()+30);
