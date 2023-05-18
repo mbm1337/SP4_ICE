@@ -117,7 +117,14 @@ public class Game {
         System.exit(0);
     }
 
+
     private void saveScoreToLeaderboard() {
+        /*
+        takes the new players name and score. Checks if it is higher than someone on the leaderboard
+        if it is, saves the index.
+        uses the index to either basicly do nothing or make everything below index to shift down and insert name and score
+        at that place.
+         */
         String[] newPlayer = {name, String.valueOf(score.getScore())};
         String[][] updatedLeaderboard = new String[leaderboard.length + 1][2];
         int index = 0;
