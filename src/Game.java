@@ -94,6 +94,7 @@ public class Game {
         onImpact();
         onDeath();
         onProjectileImpact();
+        onKill();
 
     }
 
@@ -202,13 +203,13 @@ public class Game {
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
             weaponPickedUp = true;
-            weaponCountdown = 550;
+            weaponCountdown = 650;
         }
     }
 
     public void fixedWeapon(Weapon weapon){
         weapon.setYPosition(p.getYPosition());
-        weapon.setXPosition(p.getXPosition());
+        weapon.setXPosition(p.getXPosition()+20);
         weapon.setSpeed(0);
         weaponCountdown -= 1;
     }
@@ -292,7 +293,7 @@ public class Game {
         if (Main.p.frameCount % 30 == 0) {
             for (int i = 0; i < p1.length; i++) {
                 if (p1[i].getYPosition() < 0) {
-                    p1[i].setXPosition(p.getXPosition());
+                    p1[i].setXPosition(p.getXPosition()+30);
                     p1[i].setYPosition(p.getYPosition());
                     break;
                 }
@@ -308,9 +309,10 @@ public class Game {
     public boolean onProjectileImpact(){
         int shootObsRadius = 50;
         for (int i = 0; i < p1.length; i++) {
-            if (weaponPickedUp && p1[i].getYPosition() == (int)shootObs.getYPosition()+shootObsRadius
-                && p1[i].getXPosition()+50 == shootObs.getXPosition()-shootObsRadius){
-                onKill();
+            if (weaponPickedUp
+                    && (int)shootObs.getYPosition()+shootObsRadius >= p1[i].getYPosition()+40
+                    && (int)shootObs.getYPosition()-shootObsRadius <= p1[i].getYPosition()+40
+                    && p1[i].getXPosition()+20 == shootObs.getXPosition()){
                 return true;
             }
         }

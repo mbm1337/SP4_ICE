@@ -9,7 +9,7 @@ public class Shotgun extends Weapon {
 
 
    public Shotgun(){
-       yPosition = -1000;
+       yPosition = -700;
 
        int x = random.nextInt(3);
        switch (x) {
