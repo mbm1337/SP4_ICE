@@ -22,7 +22,7 @@ public class Main extends PApplet {
 
     }
     public void draw(){
-        game.startGame();
+        game.gameLoop();
     }
 
     public void keyPressed(){

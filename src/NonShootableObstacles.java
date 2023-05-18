@@ -34,6 +34,7 @@ public class NonShootableObstacles extends Obstacles {
         this.yPosition = yPosition;
     }
 
+
     public void randomLaneSelector(){
         int x = random.nextInt(3);
         switch (x) {

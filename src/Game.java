@@ -3,21 +3,21 @@ import util.*;
 
 
 public class Game {
-    int weaponCountdown;
-    String[][] leaderboard;
-    TextUI ui;
-    FileIO io;
-    String name;
-    Player p;
-    Lane leftLane;
-    Lane midLane;
-    Lane rightLane;
-    NonShootableObstacles nonShootObs1;
-    NonShootableObstacles nonShootObs2;
-    NonShootableObstacles nonShootObs3;
-    ShootableObstacles shootObs;
-    Shotgun shotgun;
-    Score score;
+    private int weaponCountdown;
+    private String[][] leaderboard;
+    private TextUI ui;
+    private FileIO io;
+    private String name;
+    private Player p;
+    private Lane leftLane;
+    private Lane midLane;
+    private Lane rightLane;
+    private NonShootableObstacles nonShootObs1;
+    private NonShootableObstacles nonShootObs2;
+    private NonShootableObstacles nonShootObs3;
+    private ShootableObstacles shootObs;
+    private Shotgun shotgun;
+    private Score score;
     private boolean weaponPickedUp;
     private Projectiles[] p1;
 
@@ -47,6 +47,7 @@ public class Game {
         }
     }
 
+    //initialize objects
     public void setupGame() {
         name = ui.getInput("Please enter your name");
         ui.displayMessage("The game is on!");
@@ -67,11 +68,14 @@ public class Game {
 
     }
 
-    public void startGame(){
+    // Draw objects
+    public void gameLoop(){
         Main.p.background(255);
         score.setIsRunning(true);
         score.draw();
-        drawCourse();
+        leftLane.draw();
+        midLane.draw();
+        rightLane.draw();
         p.draw();
         nonShootObs1.draw();
         checkObsPosition(nonShootObs1);
@@ -96,9 +100,6 @@ public class Game {
         onProjectileImpact();
         onKill();
         onNonShootObsProjectileImpact();
-
-
-
     }
 
     public void displayLeaderboard() {
@@ -146,11 +147,6 @@ public class Game {
         leaderboard = Arrays.copyOf(leaderboard, leaderboard.length-1);
     }
 
-    public void drawCourse(){
-        leftLane.draw();
-        midLane.draw();
-        rightLane.draw();
-    }
 
     public void moveRight() {
         if (p.getCurrentLane().equals(midLane)) {
@@ -256,10 +252,11 @@ public class Game {
                 nonShootObs1.speedUp();
                 shootObs.speedUp();
                 shotgun.speedUp();
-
             }
         }
     }
+
+    // Checks players impact with obstacles
     public boolean onImpact(){
         int nonShootObsHeight = 60;
         int shootObsRadius = 50;
@@ -303,8 +300,9 @@ public class Game {
             Main.p.noLoop();
         }
     }
-    public void updateProjectiles() {
 
+    // Sets fire rate on weapon
+    public void updateProjectiles() {
         if (Main.p.frameCount % 50 == 0) {
             for (int i = 0; i < p1.length; i++) {
                 if (p1[i].getYPosition() < 0) {
@@ -320,6 +318,8 @@ public class Game {
             }
         }
     }
+
+    // checks projectile impact on shootable obstacles
     public boolean onProjectileImpact(){
         int shootObsRadius = 50;
         int height = 40;
@@ -333,12 +333,14 @@ public class Game {
         }
         return false;
     }
+    // Give points for killing shootable obstacles
     public void onKill(){
         if(onProjectileImpact()){
             spawnNewObs(shootObs);
             score.addScore(500);
         }
     }
+    // Remove projectiles if hits non shootable obstacles
     public void onNonShootObsProjectileImpact(){
         for (int i = 0; i < p1.length; i++){
             if(     p1[i].getYPosition()<= nonShootObs1.getYPosition() + 60
