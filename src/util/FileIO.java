@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class FileIO {
     File file;
     Scanner scan;
-
+    //read from leaderboard.csv file and load them up into 2d double array.
     public String[][] readLeaderBoardData(String path) {
         String[][] namesScores = new String[20][2];
         int x = 0;
@@ -37,6 +37,7 @@ public class FileIO {
         return namesScores;
 
     }
+    //save the leaderboard to leaderboard.csv.
     public void saveLeaderBoardData(String path, String[][] data){
         try {
             FileWriter file = new FileWriter(path);
