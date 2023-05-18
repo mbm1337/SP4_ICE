@@ -1,22 +1,23 @@
-import util.*;
 import java.util.Arrays;
+import util.*;
+
 
 public class Game {
-    private int weaponCountdown;
-    private String[][] leaderboard;
-    private TextUI ui;
-    private FileIO io;
-    private String name;
-    public Player p;
-    private Lane leftLane;
-    private Lane midLane;
-    private Lane rightLane;
-    private NonShootableObstacles nonShootObs1;
-    private NonShootableObstacles nonShootObs2;
-    private NonShootableObstacles nonShootObs3;
-    private ShootableObstacles shootObs;
-    private Shotgun shotgun;
-    private Score score;
+    int weaponCountdown;
+    String[][] leaderboard;
+    TextUI ui;
+    FileIO io;
+    String name;
+    Player p;
+    Lane leftLane;
+    Lane midLane;
+    Lane rightLane;
+    NonShootableObstacles nonShootObs1;
+    NonShootableObstacles nonShootObs2;
+    NonShootableObstacles nonShootObs3;
+    ShootableObstacles shootObs;
+    Shotgun shotgun;
+    Score score;
     private boolean weaponPickedUp;
     private Projectiles[] p1;
 
@@ -82,6 +83,7 @@ public class Game {
         shootObs.draw();
         checkObsPosition(shootObs);
         speedUp();
+
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
 
@@ -129,11 +131,7 @@ public class Game {
             updatedLeaderboard[leaderboard.length] = newPlayer;
         } else {
             System.arraycopy(leaderboard, 0, updatedLeaderboard, 0, index);
-
-            // Insert the new player at the insertion index
             updatedLeaderboard[index] = newPlayer;
-
-            // Copy remaining elements after the insertion index
             System.arraycopy(leaderboard, index, updatedLeaderboard, index + 1, leaderboard.length - index-1);
         }
         leaderboard = updatedLeaderboard;
