@@ -97,6 +97,8 @@ public class Game {
         onKill();
         onNonShootObsProjectileImpact();
 
+
+
     }
 
     public void displayLeaderboard() {
@@ -331,24 +333,20 @@ public class Game {
         }
     }
     public void onNonShootObsProjectileImpact(){
-        int nonShootObsHeight = 60;
         for (int i = 0; i < p1.length; i++){
-            if(     (int)nonShootObs1.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
-                    && (int)nonShootObs1.getYPosition() <= p1[i].getYPosition()
-                    && nonShootObs1.getXPosition() >= p1[i].getXPosition()
-                    && nonShootObs1.getXPosition()+150 <= p1[i].getXPosition()){
+            if(     p1[i].getYPosition()<= nonShootObs1.getYPosition() + 60
+                    && nonShootObs1.getXPosition()< p1[i].getXPosition()
+                    && nonShootObs1.getXPosition()+150> p1[i].getXPosition()){
                 p1[i].setYPosition(-100);
 
-            }else if((int)nonShootObs2.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
-                    && (int)nonShootObs2.getYPosition() <= p1[i].getYPosition()
-                    && nonShootObs2.getXPosition() >= p1[i].getXPosition()
-                    && nonShootObs2.getXPosition()+150 <= p1[i].getXPosition()){
+            }else if(p1[i].getYPosition()<= nonShootObs2.getYPosition() + 60
+                    && nonShootObs2.getXPosition()< p1[i].getXPosition()
+                    && nonShootObs2.getXPosition()+150> p1[i].getXPosition()){
                 p1[i].setYPosition(-100);
 
-            }else if((int)nonShootObs3.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
-                    && (int)nonShootObs3.getYPosition() <= p1[i].getYPosition()
-                    && nonShootObs3.getXPosition() >= p1[i].getXPosition()
-                    && nonShootObs3.getXPosition()+150 <= p1[i].getXPosition()){
+            }else if(p1[i].getYPosition()<= nonShootObs3.getYPosition() +60
+                    && nonShootObs3.getXPosition()< p1[i].getYPosition()
+                    && nonShootObs3.getXPosition()+150> p1[i].getXPosition()){
                 p1[i].setYPosition(-100);
             }
         }
