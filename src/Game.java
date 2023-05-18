@@ -97,6 +97,7 @@ public class Game {
         onDeath();
         onProjectileImpact();
         onKill();
+        onNonShootObsProjectileImpact();
 
     }
 
@@ -313,10 +314,11 @@ public class Game {
     }
     public boolean onProjectileImpact(){
         int shootObsRadius = 50;
+        int height = 40;
         for (int i = 0; i < p1.length; i++) {
             if (weaponPickedUp
-                    && (int)shootObs.getYPosition()+shootObsRadius >= p1[i].getYPosition()+40
-                    && (int)shootObs.getYPosition()-shootObsRadius <= p1[i].getYPosition()+40
+                    && (int)shootObs.getYPosition()+shootObsRadius >= p1[i].getYPosition()+height
+                    && (int)shootObs.getYPosition()-shootObsRadius <= p1[i].getYPosition()+height
                     && p1[i].getXPosition()+20 == shootObs.getXPosition()){
                 return true;
             }
@@ -329,5 +331,27 @@ public class Game {
             score.addScore(500);
         }
     }
+    public void onNonShootObsProjectileImpact(){
+        int nonShootObsHeight = 60;
+        for (int i = 0; i < p1.length; i++){
+            if((int)nonShootObs1.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
+                    && (int)nonShootObs1.getYPosition() <= p1[i].getYPosition()
+                    && nonShootObs1.getXPosition() >= p1[i].getXPosition()
+                    && nonShootObs1.getXPosition()+150 <= p1[i].getXPosition()){
+                p1[i].setYPosition(-100);
 
+            }else if((int)nonShootObs2.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
+                    && (int)nonShootObs2.getYPosition() <= p1[i].getYPosition()
+                    && nonShootObs2.getXPosition() >= p1[i].getXPosition()
+                    && nonShootObs2.getXPosition()+150 <= p1[i].getXPosition()){
+                p1[i].setYPosition(-100);
+
+            }else if((int)nonShootObs3.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
+                    && (int)nonShootObs3.getYPosition() <= p1[i].getYPosition()
+                    && nonShootObs3.getXPosition() >= p1[i].getXPosition()
+                    && nonShootObs3.getXPosition()+150 <= p1[i].getXPosition()){
+                p1[i].setYPosition(-100);
+            }
+        }
+    }
 }
