@@ -98,6 +98,8 @@ public class Game {
         onProjectileImpact();
         onKill();
 
+        System.out.println(shotgun.getYPosition());
+
     }
 
     public void displayLeaderboard() {
