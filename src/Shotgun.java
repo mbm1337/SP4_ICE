@@ -2,14 +2,15 @@ import java.util.Random;
 public class Shotgun extends Weapon {
 
    private int xPosition;
-   private int yPosition;
+   private float yPosition;
     //todo: lav speed hurtigere uden at den resetter;
-   private int speed = 4;
+   private float speed;
    Random random = new Random();
 
 
    public Shotgun(){
-       yPosition = -1000;
+       yPosition = -550;
+       this.speed = 2;
 
        int x = random.nextInt(3);
        switch (x) {
@@ -31,13 +32,16 @@ public class Shotgun extends Weapon {
        yPosition = yPosition + speed;
 
     }
-    public void setSpeed(int speed){
+    public void setSpeed(float speed){
        this.speed = speed;
     }
     public int getXPosition(){
         return xPosition;
     }
-    public int getYPosition(){
+    public void speedUp() {
+        this.speed = (float) (this.speed + 0.1);
+    }
+    public float getYPosition(){
         return yPosition;
     }
     public int setXPosition(int xPosition){

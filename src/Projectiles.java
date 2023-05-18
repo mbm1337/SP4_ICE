@@ -1,11 +1,11 @@
 public class Projectiles {
     private int speed = 4;
     private int xPosition;
-    private int yPosition;
+    private float yPosition;
 
-    public Projectiles(Player p){
-        yPosition = p.getYPosition();
-        xPosition = p.getXPosition();
+    public Projectiles(Weapon weapon){
+        yPosition = weapon.getYPosition();
+        xPosition = weapon.getXPosition();
         
     }
     public void draw(){
@@ -24,7 +24,7 @@ public class Projectiles {
         this.xPosition = xPosition;
     }
 
-    public int getYPosition() {
+    public float getYPosition() {
         return yPosition;
     }
 

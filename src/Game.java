@@ -62,7 +62,7 @@ public class Game {
 
         p1 = new Projectiles[20];
         for(int i = 0; i < p1.length; i++) {
-            p1[i] = new Projectiles(p);
+            p1[i] = new Projectiles(shotgun);
         }
 
     }
@@ -197,7 +197,7 @@ public class Game {
     }
 
     public void pickUpWeapon(Weapon weapon,int diff){
-        if(weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition()) {
+        if((int) weapon.getYPosition() == p.getYPosition() && weapon.getXPosition()-diff == p.getXPosition()) {
             weapon.setXPosition(p.getXPosition());
             weapon.setYPosition(p.getYPosition());
             weapon.setSpeed(0);
@@ -208,7 +208,7 @@ public class Game {
 
     public void fixedWeapon(Weapon weapon){
         weapon.setYPosition(p.getYPosition());
-        weapon.setXPosition(p.getXPosition());
+        weapon.setXPosition(p.getXPosition()+20);
         weapon.setSpeed(0);
         weaponCountdown -= 1;
     }
@@ -216,7 +216,14 @@ public class Game {
     public void removeWeapon(Weapon weapon){
         if(weaponCountdown == 0){
             weaponPickedUp = false;
-            weapon.setSpeed(2);
+            weapon.setSpeed(shootObs.getSpeed());
+            removeProjectiles();
+        }
+    }
+    public void removeProjectiles() {
+        for (int i = 0; i < p1.length; i++) {
+            p1[i].setXPosition(-100);
+            p1[i].setYPosition(-100);
         }
     }
 
@@ -239,6 +246,7 @@ public class Game {
                 nonShootObs2.speedUp();
                 nonShootObs1.speedUp();
                 shootObs.speedUp();
+                shotgun.speedUp();
 
             }
         }
@@ -292,13 +300,12 @@ public class Game {
         if (Main.p.frameCount % 30 == 0) {
             for (int i = 0; i < p1.length; i++) {
                 if (p1[i].getYPosition() < 0) {
-                    p1[i].setXPosition(p.getXPosition());
+                    p1[i].setXPosition(p.getXPosition()+20);
                     p1[i].setYPosition(p.getYPosition());
                     break;
                 }
             }
         }
-
         for (int i = 0; i < p1.length; i++) {
             if (p1[i].getYPosition() >= 0) {
                 p1[i].draw();
