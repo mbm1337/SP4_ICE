@@ -14,12 +14,6 @@ public class ShootableObstacles extends Obstacles {
 
     }
 
-    public void onDeath(){
-        if(health <= 0){
-            //todo:    == null
-            //todo: score += 10;
-        }
-    }
     public void draw(){
         Main.p.fill(0,0,255);
         Main.p.strokeWeight(3);

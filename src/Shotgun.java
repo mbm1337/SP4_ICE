@@ -3,7 +3,6 @@ public class Shotgun extends Weapon {
 
    private int xPosition;
    private float yPosition;
-    //todo: lav speed hurtigere uden at den resetter;
    private float speed;
    Random random = new Random();
 

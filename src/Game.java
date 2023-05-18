@@ -60,7 +60,6 @@ public class Game {
         nonShootObs3 = new NonShootableObstacles(-400);
         shootObs = new ShootableObstacles(-600);
         shotgun = new Shotgun();
-
         p1 = new Projectiles[20];
         for(int i = 0; i < p1.length; i++) {
             p1[i] = new Projectiles(shotgun);
@@ -83,7 +82,6 @@ public class Game {
         shootObs.draw();
         checkObsPosition(shootObs);
         speedUp();
-
         shotgun.draw();
         pickUpWeapon(shotgun, 40);
 
@@ -251,7 +249,6 @@ public class Game {
             }
         }
     }
-
     public boolean onImpact(){
         int nonShootObsHeight = 60;
         int shootObsRadius = 50;
@@ -334,7 +331,7 @@ public class Game {
     public void onNonShootObsProjectileImpact(){
         int nonShootObsHeight = 60;
         for (int i = 0; i < p1.length; i++){
-            if((int)nonShootObs1.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
+            if(     (int)nonShootObs1.getYPosition()+nonShootObsHeight >= p1[i].getYPosition()
                     && (int)nonShootObs1.getYPosition() <= p1[i].getYPosition()
                     && nonShootObs1.getXPosition() >= p1[i].getXPosition()
                     && nonShootObs1.getXPosition()+150 <= p1[i].getXPosition()){
